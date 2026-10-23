@@ -42,6 +42,7 @@ test('project status data covers requested systems without implying availability
   assert.match(projects.find((project) => project.name === 'SilverForge / BSNA').summary, /local prototypes/)
   assert.match(projects.find((project) => project.name === 'BTCS mining pool').summary, /not been runtime-tested/)
   assert.match(projects.find((project) => project.name === 'BTCS mining pool').next, /GPL-3\.0/)
+  assert.match(projects.find((project) => project.name === 'Silver Scan').summary, /bounded local view/)
 })
 
 test('project details explain each distinct SilvEx workstream and development boundary', () => {

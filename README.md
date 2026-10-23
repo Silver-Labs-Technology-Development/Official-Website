@@ -59,7 +59,9 @@ or reviews deployment changes.
   Apache-2.0 license but is described by its maintainers as unmaintained and
   as-is; it has not been adopted and is not suitable for real funds as-is.
 - Silver Scan has no dedicated indexer/explorer implementation. BTCS L2 Studio
-  has partial local RPC views, but they are not a substitute for an explorer.
+  has a bounded local L2 block/transaction view and block/transaction lookup,
+  but no address history, token/NFT indexing, L1 indexer, or reorg-aware
+  explorer service.
 - No BTCS pool service or POW-S implementation was found. Pool compatibility
   with CKPool looks promising at source level but is not runtime-tested. CKPool
   is GPL-3.0, so licensing and notice obligations require review before reuse.
