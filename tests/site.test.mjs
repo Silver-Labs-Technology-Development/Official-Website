@@ -54,3 +54,10 @@ test('responsive and accessibility foundations are present', () => {
   assert.match(css, /@media \(prefers-reduced-motion: reduce\)/)
   assert.match(css, /:focus-visible/)
 })
+
+test('Silver Labs visual identity uses navy structure and bright blue accents', () => {
+  assert.match(css, /--navy:\s*#14263d/i)
+  assert.match(css, /--accent:\s*#1677d2/i)
+  assert.match(css, /--blue:\s*#8dc8ff/i)
+  assert.match(css, /\.button-light\s*\{[^}]*background:\s*var\(--accent\)/s)
+})
