@@ -18,12 +18,37 @@ test('all primary navigation sections exist and navigation links resolve', () =>
 
 test('project status data covers requested systems without implying availability', () => {
   const names = projects.map((project) => project.name)
-  for (const name of ['SilverPay', 'SilverForge / BSNA', 'SilvEx', 'Silver Scan', 'BTCS L2', 'BTCS mining pool', 'POW-S']) {
+  for (const name of [
+    'SilverPay',
+    'SilverForge / BSNA',
+    'SilvEx CEX',
+    'SilvEx DEX',
+    'SilvEx DEX Node',
+    'Silver Scan',
+    'BTCS L2',
+    'BTCS mining pool',
+    'POW-S',
+  ]) {
     assert.ok(names.includes(name), `missing project ${name}`)
   }
   assert.ok(projects.every((project) => ['Prototype', 'Development', 'Planned', 'Research'].includes(project.status)))
   assert.ok(projects.every((project) => project.repo === null || project.repo.startsWith('https://github.com/Silver-Labs-Technology-Development/')))
   assert.ok(projects.every((project) => typeof project.next === 'string' && project.next.length > 0))
+
+  const exchangeProjects = projects.filter((project) => project.name.startsWith('SilvEx '))
+  assert.equal(exchangeProjects.length, 3)
+  assert.ok(exchangeProjects.every((project) => project.status === 'Planned' && project.repo === null))
+  assert.match(projects.find((project) => project.name === 'SilverForge / BSNA').summary, /local prototypes/)
+  assert.match(projects.find((project) => project.name === 'BTCS mining pool').summary, /no Silver Labs pool service/)
+})
+
+test('project details explain each distinct SilvEx workstream and development boundary', () => {
+  for (const heading of ['SilvEx CEX', 'SilvEx DEX', 'SilvEx DEX Node', 'BTCS mining pool', 'POW-S']) {
+    assert.ok(html.includes(`<h3>${heading}</h3>`), `missing details for ${heading}`)
+  }
+  assert.match(html, /No cross-network transfer or trustless L2 settlement is claimed/)
+  assert.match(html, /no real-value trading is available/)
+  assert.match(html, /SilverForge previews are not available as public downloads/)
 })
 
 test('external links use the verified Silver Labs organization and documented paths', () => {

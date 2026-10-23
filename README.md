@@ -49,11 +49,23 @@ or reviews deployment changes.
 - Link only to source repositories and documentation verified to exist.
 - The public Silver Labs repository currently found for Bitcoin Silver is a
   fork of `bitcoin-silver/core`; it is not the separate BTCS L2 codebase.
-- BTCS L2, SilverPay, and token-tooling implementation work inspected for this
-  site remains in a local checkout without a verified public organization
-  repository URL. Product cards say so rather than linking to guessed paths.
-- SilvEx, Silver Scan, a pool service, and POW-S have no codebase found in the
-  inspected workspace and are described as planned/research.
+- SilverPay is one unified product, with wallet/account functionality as its
+  initial scope. Its current local service provides read-only L1/L2 views.
+- SilverForge has local token-tooling prototypes, including a separate static
+  frontend preview. The frontend has not been deployed, and neither prototype
+  has a verified public organization repository URL.
+- SilvEx CEX, SilvEx DEX, and SilvEx DEX Node are separate planned workstreams.
+  No operational exchange, swap, or node service was found. OpenCEX is an
+  upstream candidate under assessment, not adopted software.
+- Silver Scan has no dedicated indexer/explorer implementation. BTCS L2 Studio
+  has partial local RPC views, but they are not a substitute for an explorer.
+- No BTCS pool service or POW-S implementation was found. Pool compatibility
+  with upstream software remains under investigation; L2 sequencing is not
+  mining.
+- Website project cards distinguish local prototypes from planned systems and
+  link only verified public repositories. They do not publish private source
+  links or claim real-value exchange, cross-network transfer, or trustless L2
+  settlement.
 - Existing upstream license and security notices remain with their source
   repository. This website repository has no license file; no new license is
   implied here.
