@@ -38,8 +38,10 @@ test('project status data covers requested systems without implying availability
   const exchangeProjects = projects.filter((project) => project.name.startsWith('SilvEx '))
   assert.equal(exchangeProjects.length, 3)
   assert.ok(exchangeProjects.every((project) => project.status === 'Planned' && project.repo === null))
+  assert.match(projects.find((project) => project.name === 'SilvEx CEX').summary, /not been adopted/)
   assert.match(projects.find((project) => project.name === 'SilverForge / BSNA').summary, /local prototypes/)
-  assert.match(projects.find((project) => project.name === 'BTCS mining pool').summary, /no Silver Labs pool service/)
+  assert.match(projects.find((project) => project.name === 'BTCS mining pool').summary, /not been runtime-tested/)
+  assert.match(projects.find((project) => project.name === 'BTCS mining pool').next, /GPL-3\.0/)
 })
 
 test('project details explain each distinct SilvEx workstream and development boundary', () => {

@@ -55,13 +55,15 @@ or reviews deployment changes.
   frontend preview. The frontend has not been deployed, and neither prototype
   has a verified public organization repository URL.
 - SilvEx CEX, SilvEx DEX, and SilvEx DEX Node are separate planned workstreams.
-  No operational exchange, swap, or node service was found. OpenCEX is an
-  upstream candidate under assessment, not adopted software.
+  No operational exchange, swap, or node service was found. OpenCEX has an
+  Apache-2.0 license but is described by its maintainers as unmaintained and
+  as-is; it has not been adopted and is not suitable for real funds as-is.
 - Silver Scan has no dedicated indexer/explorer implementation. BTCS L2 Studio
   has partial local RPC views, but they are not a substitute for an explorer.
 - No BTCS pool service or POW-S implementation was found. Pool compatibility
-  with upstream software remains under investigation; L2 sequencing is not
-  mining.
+  with CKPool looks promising at source level but is not runtime-tested. CKPool
+  is GPL-3.0, so licensing and notice obligations require review before reuse.
+  L2 sequencing is not mining.
 - Website project cards distinguish local prototypes from planned systems and
   link only verified public repositories. They do not publish private source
   links or claim real-value exchange, cross-network transfer, or trustless L2
