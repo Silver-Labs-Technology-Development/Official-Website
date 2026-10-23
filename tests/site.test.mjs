@@ -6,6 +6,7 @@ import { projects } from '../projects.mjs'
 
 const html = await readFile(new URL('../index.html', import.meta.url), 'utf8')
 const css = await readFile(new URL('../styles.css', import.meta.url), 'utf8')
+const pagesWorkflow = await readFile(new URL('../.github/workflows/pages.yml', import.meta.url), 'utf8')
 const expectedSections = ['home', 'ecosystem', 'architecture', 'roadmap', 'developers', 'about']
 
 test('all primary navigation sections exist and navigation links resolve', () => {
@@ -90,4 +91,14 @@ test('Silver Labs visual identity uses navy structure and bright blue accents', 
   assert.match(css, /--accent:\s*#1677d2/i)
   assert.match(css, /--blue:\s*#8dc8ff/i)
   assert.match(css, /\.button-light\s*\{[^}]*background:\s*var\(--accent\)/s)
+})
+
+test('Pages workflow validates pull requests and deploys only the development branch', () => {
+  assert.match(pagesWorkflow, /push:\s*\n\s+branches:\s*\n\s+- website-development/)
+  assert.match(pagesWorkflow, /pull_request:\s*\n\s+branches:\s*\n\s+- main/)
+  assert.match(pagesWorkflow, /if:\s+github\.event_name != 'pull_request'/)
+  assert.match(pagesWorkflow, /path: _site/)
+  assert.match(pagesWorkflow, /pages:\s+write/)
+  assert.match(pagesWorkflow, /id-token:\s+write/)
+  assert.match(pagesWorkflow, /node --test tests\/\*\.test\.mjs/)
 })

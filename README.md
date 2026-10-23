@@ -9,6 +9,7 @@ availability or production readiness.
 Requires Node.js 18 or newer; there are no runtime or build dependencies.
 
 ```sh
+node --test tests/*.test.mjs
 node scripts/serve.mjs
 ```
 
@@ -27,22 +28,22 @@ node --check scripts/serve.mjs
 The site is plain HTML, CSS, and JavaScript; it has no transpile/build step.
 The project directory and status labels are maintained in `projects.mjs`.
 
-## Deployment and preview boundary
+## GitHub Pages deployment
 
 The repository is currently **public**, with `main` as the default branch; the
-published Pages site is also reachable publicly. These are observed existing
-settings, not a visibility change made for this work. Active website changes
-are on `website-development`. Do not merge this branch or change repository
-visibility or live deployment configuration without owner review. The current
-published site is
+published Pages URL is
 <https://silver-labs-technology-development.github.io/Official-Website/>.
-GitHub Actions reports a successful Pages build/deployment for the current
-default branch. The deployment workflow is GitHub-managed and is not present
-in the tracked repository tree. The repository has no tracked `CNAME` file;
-the unauthenticated Pages settings endpoint returned HTTP 404, so the detailed
-Pages configuration could not be inspected.
-Use the local preview above until the organization approves a branch preview
-or reviews deployment changes.
+The tracked `pages.yml` workflow tests the site, packages only its static
+runtime files, and deploys commits pushed to `website-development`. Pull
+requests to `main` run validation without publishing. A maintainer must enable
+GitHub Actions as the Pages source in repository settings and grant the
+workflow's Pages and OIDC permissions if they are not already enabled. No
+custom domain is configured by this workflow.
+
+GitHub Pages serves the static output only. It does not provide the website
+with a database, private API, RPC service, or backend execution environment.
+The existing public URL currently shows the old Coming Soon placeholder until
+a successful Pages deployment of the new source is confirmed.
 
 ## Status and source-link policy
 
