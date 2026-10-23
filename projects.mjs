@@ -4,7 +4,7 @@ export const projects = [
     category: 'Unified wallet, account & asset experience',
     status: 'Prototype',
     statusClass: 'prototype',
-    summary: 'SilverPay is one product. Its local read-only service and web Studio view query BTCS L1 and BTCS L2 separately; the service test report records 10/10 passing tests. Wallet signing, recovery, and transaction history are not yet established.',
+    summary: 'SilverPay is one product: the wallet is its initial account and asset-management functionality. The existing service and web Studio provide partial read-only L1/L2 views; no separate mobile codebase was found.',
     next: 'Continue the unified wallet foundation with separate L1/L2 account models, then add secure signing and recovery after review. Payment processing remains a later SilverPay phase.',
     repo: null,
     repoLabel: 'No separate public repository',
