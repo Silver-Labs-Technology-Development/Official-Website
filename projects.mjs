@@ -1,11 +1,11 @@
 export const projects = [
   {
     name: 'SilverPay',
-    category: 'Wallet & account experience',
+    category: 'Unified wallet, account & asset experience',
     status: 'Prototype',
     statusClass: 'prototype',
-    summary: 'A read-only service and partial web Studio view display separate BTCS L1 wallet and BTCS L2 account data. No independent SilverPay mobile repository was found.',
-    next: 'Secure account architecture, recovery, signing, transaction history, and a dedicated mobile codebase are future work.',
+    summary: 'SilverPay is one product. Its current read-only service and partial web Studio view display separate BTCS L1 wallet and BTCS L2 account data. No independent mobile client or repository was found.',
+    next: 'Build out account and asset management safely; signing, recovery, transaction history, and a mobile client remain future work. Payments come later within SilverPay.',
     repo: null,
     repoLabel: 'No separate public repository',
   },
