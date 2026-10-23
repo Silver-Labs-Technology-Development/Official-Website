@@ -52,8 +52,10 @@ or reviews deployment changes.
 - SilverPay is one unified product, with wallet/account functionality as its
   initial scope. Its current local service provides read-only L1/L2 views.
 - SilverForge has local token-tooling prototypes, including a separate static
-  frontend preview. The frontend has not been deployed, and neither prototype
-  has a verified public organization repository URL.
+  frontend preview. The static frontend now includes an experimental,
+  identity-gated BTCS L2 local-node profile; it has no public L2 deployment
+  integration. The frontend has not been deployed, and neither prototype has
+  a verified public organization repository URL.
 - SilvEx CEX, SilvEx DEX, and SilvEx DEX Node are separate planned workstreams.
   No operational exchange, swap, or node service was found. OpenCEX has an
   Apache-2.0 license but is described by its maintainers as unmaintained and

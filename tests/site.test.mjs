@@ -40,6 +40,7 @@ test('project status data covers requested systems without implying availability
   assert.ok(exchangeProjects.every((project) => project.status === 'Planned' && project.repo === null))
   assert.match(projects.find((project) => project.name === 'SilvEx CEX').summary, /not been adopted/)
   assert.match(projects.find((project) => project.name === 'SilverForge / BSNA').summary, /local prototypes/)
+  assert.match(projects.find((project) => project.name === 'SilverForge / BSNA').summary, /identity-gated BTCS L2 local-node profile/)
   assert.match(projects.find((project) => project.name === 'BTCS mining pool').summary, /not been runtime-tested/)
   assert.match(projects.find((project) => project.name === 'BTCS mining pool').next, /GPL-3\.0/)
   assert.match(projects.find((project) => project.name === 'Silver Scan').summary, /bounded local view/)
@@ -52,6 +53,7 @@ test('project details explain each distinct SilvEx workstream and development bo
   assert.match(html, /No cross-network transfer or trustless L2 settlement is claimed/)
   assert.match(html, /no real-value trading is available/)
   assert.match(html, /SilverForge previews are not available as public downloads/)
+  assert.match(html, /experimental BTCS L2 profile restricted to an identity-checked local development node/)
 })
 
 test('external links use the verified Silver Labs organization and documented paths', () => {
