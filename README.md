@@ -29,14 +29,18 @@ The project directory and status labels are maintained in `projects.mjs`.
 
 ## Deployment and preview boundary
 
-The default branch is `main`; active website work is on `website-development`.
-Do not merge this branch or change the live deployment configuration without
-review. The current published site is
+The repository is currently **public**, with `main` as the default branch; the
+published Pages site is also reachable publicly. These are observed existing
+settings, not a visibility change made for this work. Active website changes
+are on `website-development`. Do not merge this branch or change repository
+visibility or live deployment configuration without owner review. The current
+published site is
 <https://silver-labs-technology-development.github.io/Official-Website/>.
 GitHub Actions reports a successful Pages build/deployment for the current
 default branch. The deployment workflow is GitHub-managed and is not present
 in the tracked repository tree. The repository has no tracked `CNAME` file;
-an authenticated Pages settings query was not available during this update.
+the unauthenticated Pages settings endpoint returned HTTP 404, so the detailed
+Pages configuration could not be inspected.
 Use the local preview above until the organization approves a branch preview
 or reviews deployment changes.
 
