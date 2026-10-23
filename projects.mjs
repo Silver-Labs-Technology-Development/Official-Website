@@ -14,7 +14,7 @@ export const projects = [
     category: 'Token tooling',
     status: 'Development',
     statusClass: 'development',
-    summary: 'Two distinct local prototypes exist: the BTCS L2 Studio/asset service tests ERC-20 and proposed BSNA-FTS1 flows; the standalone static SilverForge preview constructs wallet-authorized Ethereum, BNB Chain, and Solana transactions, plus an experimental identity-gated BTCS L2 local-node profile. Its local suite passes 11/11 tests; no public BTCS L2 deployment is supported.',
+    summary: 'Two distinct local prototypes exist: the BTCS L2 Studio/asset service tests ERC-20 and proposed BSNA-FTS1 flows; the standalone static SilverForge preview constructs wallet-authorized Ethereum, BNB Chain, and Solana transactions, plus an experimental identity-gated BTCS L2 local-node profile. Its local suite passes 12/12 tests; no public BTCS L2 deployment is supported.',
     next: 'Test the experimental BTCS L2 profile against a running isolated node, review external-chain transaction layouts, test wallet extensions on testnets, and establish the private source repository. Neither prototype is a public product or establishes finalized BSNA conformance.',
     repo: null,
     repoLabel: 'Local development only; no public SilverForge repository',
