@@ -60,8 +60,11 @@ website source; Actions currently publishes from `website-development`.
   frontend preview. The public `SilverForge-Studio` repository and the
   `btcs-l2` repository contain the corresponding development source. The
   static frontend includes an experimental, identity-gated BTCS L2 local-node
-  profile; it has no public L2 deployment integration. The frontend has not
-  been independently deployed.
+  profile; it has no public L2 deployment integration. A public GitHub Pages
+  preview is served from the repository's `gh-pages` branch at
+  <https://silver-labs-technology-development.github.io/SilverForge-Studio/>.
+  The repository's own Pages policy document still describes publishing as
+  disabled, so that policy mismatch remains unresolved.
 - SilvEx CEX, SilvEx DEX, and SilvEx DEX Node are separate planned workstreams.
   No operational exchange, swap, or node service was found. OpenCEX has an
   Apache-2.0 license but is described by its maintainers as unmaintained and
