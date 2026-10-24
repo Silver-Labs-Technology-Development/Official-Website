@@ -27,7 +27,7 @@ test('project status data covers requested systems without implying availability
     'SilvEx DEX Node',
     'Silver Scan',
     'BTCS L2',
-    'BTCS mining pool',
+    'Silver Pool',
     'POW-S',
   ]) {
     assert.ok(names.includes(name), `missing project ${name}`)
@@ -52,7 +52,7 @@ test('project status data covers requested systems without implying availability
     ['SilvEx DEX', 'SilvEx-DEX'],
     ['SilvEx DEX Node', 'SilvEx-DEX-Node'],
     ['Silver Scan', 'Silver-Scan'],
-    ['BTCS mining pool', 'BTCS-Mining-Pool'],
+    ['Silver Pool', 'Silver-Pool'],
     ['POW-S', 'POW-S'],
   ]) {
     const project = projects.find((candidate) => candidate.name === name)
@@ -66,13 +66,13 @@ test('project status data covers requested systems without implying availability
   assert.match(projects.find((project) => project.name === 'SilvEx CEX').summary, /not been adopted/)
   assert.match(projects.find((project) => project.name === 'SilverForge / BSNA').summary, /local prototypes/)
   assert.match(projects.find((project) => project.name === 'SilverForge / BSNA').summary, /identity-gated BTCS L2 local-node profile/)
-  assert.match(projects.find((project) => project.name === 'BTCS mining pool').summary, /not been runtime-tested/)
-  assert.match(projects.find((project) => project.name === 'BTCS mining pool').next, /GPL-3\.0/)
+  assert.match(projects.find((project) => project.name === 'Silver Pool').summary, /not been runtime-tested/)
+  assert.match(projects.find((project) => project.name === 'Silver Pool').next, /GPL-3\.0/)
   assert.match(projects.find((project) => project.name === 'Silver Scan').summary, /bounded local view/)
 })
 
 test('project details explain each distinct SilvEx workstream and development boundary', () => {
-  for (const heading of ['SilvEx CEX', 'SilvEx DEX', 'SilvEx DEX Node', 'BTCS mining pool', 'POW-S']) {
+  for (const heading of ['SilvEx CEX', 'SilvEx DEX', 'SilvEx DEX Node', 'Silver Pool', 'POW-S']) {
     assert.ok(html.includes(`<h3>${heading}</h3>`), `missing details for ${heading}`)
   }
   assert.match(html, /No cross-network transfer or trustless L2 settlement is claimed/)
