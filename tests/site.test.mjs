@@ -59,13 +59,19 @@ test('project details explain each distinct SilvEx workstream and development bo
   assert.match(html, /No cross-network transfer or trustless L2 settlement is claimed/)
   assert.match(html, /no real-value trading is available/)
   assert.match(html, /public Bitcoin Silver source plus the SilverPay, SilverForge, BTCS L2, and shared-platform repositories/)
+  assert.match(html, /one coordinated BTCS installation with an integrated GUI/)
+  assert.match(html, /unified installer and integrated GUI are targets, not available releases/)
   for (const repository of [
     'silver-wallet',
     'SilverForge-Studio',
     'btcs-l2',
+    'Silver-Labs-Bitcoin-Silver-Development/tree/silver-labs-l2',
     'silver-labs-platform',
   ]) assert.ok(html.includes(`https://github.com/Silver-Labs-Technology-Development/${repository}`))
-  assert.doesNotMatch(html, /Silver-Labs-Bitcoin-Silver-Development\/tree\/silver-labs-l2/)
+  assert.equal(
+    projects.find((project) => project.name === 'BTCS L2').repo,
+    'https://github.com/Silver-Labs-Technology-Development/btcs-l2',
+  )
   assert.doesNotMatch(html, /no public source repository exists|do not yet have verified public source repositories|not available as public downloads/)
   assert.match(html, /experimental BTCS L2 profile restricted to an identity-checked local development node/)
   assert.equal(

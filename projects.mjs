@@ -64,10 +64,10 @@ export const projects = [
     category: 'Execution & settlement research',
     status: 'Prototype',
     statusClass: 'prototype',
-    summary: 'The local engineering checkout contains an EVM harness, JSON-RPC, and an opt-in trusted single-operator development sequencer. A session report records focused deposit, settlement, chain-selection, reorg, and withdrawal tests passing locally.',
-    next: 'The full L1-to-L2-to-withdrawal lifecycle is not proven; restart/reorg recovery and broader independent verification remain open. Sequencing is not mining.',
+    summary: 'The public btcs-l2 repository independently develops EVM execution, JSON-RPC, Studio, and trusted single-operator prototypes. The silver-labs-l2 Core branch contains Core-side integration work. The product goal is one coordinated BTCS installation, but no unified installer or production L2 release is available yet.',
+    next: 'Define compatible component versions, service lifecycle, data directories, resource limits, upgrades, and integration tests before packaging. Preserve L1 consensus boundaries; trusted sequencing and settlement are not production-ready.',
     repo: 'https://github.com/Silver-Labs-Technology-Development/btcs-l2',
-    repoLabel: 'btcs-l2',
+    repoLabel: 'BTCS L2 development repository',
   },
   {
     name: 'BTCS mining pool',
