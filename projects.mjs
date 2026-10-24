@@ -16,8 +16,8 @@ export const projects = [
     statusClass: 'development',
     summary: 'Two distinct local prototypes exist: the BTCS L2 Studio/asset service tests ERC-20 and proposed BSNA-FTS1 flows; the standalone static SilverForge preview constructs wallet-authorized Ethereum, BNB Chain, and Solana transactions, plus an experimental identity-gated BTCS L2 local-node profile. Its local suite passes 12/12 tests; no public BTCS L2 deployment is supported.',
     next: 'Test the experimental BTCS L2 profile against a running isolated node, review external-chain transaction layouts, test wallet extensions on testnets, and establish the private source repository. Neither prototype is a public product or establishes finalized BSNA conformance.',
-    repo: null,
-    repoLabel: 'Local development only; no public SilverForge repository',
+    repo: 'https://github.com/Silver-Labs-Technology-Development/SilverForge-Studio',
+    repoLabel: 'SilverForge-Studio',
   },
   {
     name: 'SilvEx CEX',
@@ -66,8 +66,8 @@ export const projects = [
     statusClass: 'prototype',
     summary: 'The local engineering checkout contains an EVM harness, JSON-RPC, and an opt-in trusted single-operator development sequencer. A session report records focused deposit, settlement, chain-selection, reorg, and withdrawal tests passing locally.',
     next: 'The full L1-to-L2-to-withdrawal lifecycle is not proven; restart/reorg recovery and broader independent verification remain open. Sequencing is not mining.',
-    repo: null,
-    repoLabel: 'Local engineering checkout; no public link',
+    repo: 'https://github.com/Silver-Labs-Technology-Development/btcs-l2',
+    repoLabel: 'btcs-l2',
   },
   {
     name: 'BTCS mining pool',
