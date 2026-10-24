@@ -40,6 +40,9 @@ test('project status data covers requested systems without implying availability
     'https://github.com/Silver-Labs-Technology-Development/SilverPay',
   )
   assert.match(projects.find((project) => project.name === 'SilverPay').summary, /one product encompassing its wallet and payment services/)
+  assert.match(projects.find((project) => project.name === 'SilverPay').summary, /pending block tag/)
+  assert.match(projects.find((project) => project.name === 'SilverPay').next, /local funding method/)
+  assert.match(projects.find((project) => project.name === 'SilverForge / BSNA').summary, /17\/17/)
 
   const exchangeProjects = projects.filter((project) => project.name.startsWith('SilvEx '))
   assert.equal(exchangeProjects.length, 3)
@@ -78,6 +81,8 @@ test('project details explain each distinct SilvEx workstream and development bo
   assert.match(html, /one coordinated BTCS installation with an integrated GUI/)
   assert.match(html, /unified installer and integrated GUI are targets, not available releases/)
   assert.match(html, /Planned repositories for SilvEx, Silver Scan, the pool, and POW-S contain scope documents only/)
+  assert.match(html, /Application capability matrix/)
+  assert.match(html, /Injected-wallet sending is not yet verified while the node rejects the <code>pending<\/code> block tag/)
   for (const repository of [
     'SilverPay',
     'SilverForge-Studio',
@@ -108,6 +113,7 @@ test('developer quickstart gives clone and test commands for every public reposi
     'npm ci',
     'npm test',
     'npm run check:types',
+    'BTCS_L2_RPC_URL=http://127.0.0.1:8545 npm test',
   ]) assert.ok(html.includes(command), `missing quickstart command: ${command}`)
   assert.doesNotMatch(html, /\/home\/user\//)
   assert.match(css, /\.quickstart-grid\s*\{[^}]*grid-template-columns/)

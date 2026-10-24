@@ -269,6 +269,7 @@
             <a class="dev-link" href="https://github.com/Silver-Labs-Technology-Development/btcs-l2" target="_blank" rel="noopener noreferrer"><span><b>07</b> BTCS L2 development repository</span><span aria-hidden="true">↗</span></a>
             <a class="dev-link" href="https://github.com/Silver-Labs-Technology-Development/Silver-Labs-Bitcoin-Silver-Development/tree/silver-labs-l2" target="_blank" rel="noopener noreferrer"><span><b>08</b> BTCS Core L2 integration branch</span><span aria-hidden="true">↗</span></a>
             <a class="dev-link" href="https://github.com/Silver-Labs-Technology-Development/silver-labs-platform" target="_blank" rel="noopener noreferrer"><span><b>09</b> Shared platform source</span><span aria-hidden="true">↗</span></a>
+            <a class="dev-link" href="https://github.com/Silver-Labs-Technology-Development/silver-labs-platform/blob/main/docs/APP-CAPABILITY-MATRIX.md" target="_blank" rel="noopener noreferrer"><span><b>10</b> Application capability matrix</span><span aria-hidden="true">↗</span></a>
             <div class="dev-note"><strong>Prototype and contribution status</strong><p>Use each linked repository's README for scope, setup, and current limitations. The unified installer and integrated GUI are targets, not available releases. Planned repositories for SilvEx, Silver Scan, the pool, and POW-S contain scope documents only; no implementation is currently published.</p></div>
           </div>
         </div>
@@ -299,11 +300,11 @@ npm run build</code></pre>
             </article>
             <article class="quickstart-card">
               <h4>SilverPay wallet</h4>
-              <p>Browser wallet for the local BTCS L2 development profile.</p>
+              <p>Browser wallet for the local BTCS L2 development profile. Start a disposable node first; the Vite server proxies <code>/rpc</code> because the node sends no CORS headers. Injected-wallet sending is not yet verified while the node rejects the <code>pending</code> block tag.</p>
               <pre><code>git clone https://github.com/Silver-Labs-Technology-Development/SilverPay.git
 cd SilverPay
 npm ci
-npm test
+BTCS_L2_RPC_URL=http://127.0.0.1:8545 npm test
 npm run build</code></pre>
             </article>
             <article class="quickstart-card">

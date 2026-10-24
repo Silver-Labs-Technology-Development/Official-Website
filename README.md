@@ -54,8 +54,13 @@ website source; Actions currently publishes from `website-development`.
   fork of `bitcoin-silver/core`; it is not the separate BTCS L2 codebase.
 - SilverPay is one product encompassing its wallet and payment services; the
   wallet is not a separate product. The public `SilverPay` repository
-  contains the wallet application. Its current local service provides partial
-  read-only L1/L2 views; payment processing remains a later phase.
+  contains the canonical browser wallet. It verifies the local chain identity,
+  shows native and tracked ERC-20 balances, scans bounded history, and prepares
+  transfers for an injected wallet. Its 70-test local suite passes with a
+  disposable node and harness key; injected-wallet sending is not yet verified
+  because the node rejects the `pending` block tag. Payment processing remains
+  a later phase. The per-product evidence is in the platform's
+  `docs/APP-CAPABILITY-MATRIX.md`.
 - SilverForge has local token-tooling prototypes, including a separate static
   frontend preview. The public `SilverForge-Studio` repository and the
   `btcs-l2` repository contain the corresponding development source. The
