@@ -30,33 +30,37 @@ The project directory and status labels are maintained in `projects.mjs`.
 
 ## GitHub Pages deployment
 
-The repository is currently **public**, with `main` as the default branch; the
-published Pages URL is
+The repository is **public**, with `main` as the default branch. The
+`website-development` branch is the verified Pages publishing source, and the
+published URL is
 <https://silver-labs-technology-development.github.io/Official-Website/>.
 The tracked `pages.yml` workflow tests the site, packages only its static
 runtime files, and deploys commits pushed to `website-development`. Pull
-requests to `main` run validation without publishing. A maintainer must enable
-GitHub Actions as the Pages source in repository settings and grant the
-workflow's Pages and OIDC permissions if they are not already enabled. No
-custom domain is configured by this workflow.
+requests to `main` run validation without publishing. GitHub Pages is configured
+to use Actions, and the `github-pages` environment allows both `main` and
+`website-development`; the deploy job requires Pages write and OIDC permissions.
+No custom domain is configured.
 
 GitHub Pages serves the static output only. It does not provide the website
 with a database, private API, RPC service, or backend execution environment.
-The existing public URL currently shows the old Coming Soon placeholder until
-a successful Pages deployment of the new source is confirmed.
+The live site was verified after a successful Actions deployment from
+`website-development`. The legacy placeholder remains only on the default
+`main` branch and is not the published Pages source.
 
 ## Status and source-link policy
 
 - Link only to source repositories and documentation verified to exist.
 - The public Silver Labs repository currently found for Bitcoin Silver is a
   fork of `bitcoin-silver/core`; it is not the separate BTCS L2 codebase.
-- SilverPay is one unified product, with wallet/account functionality as its
-  initial scope. Its current local service provides read-only L1/L2 views.
+- SilverPay is one product encompassing its wallet and payment services; the
+  wallet is not a separate product. The public `silver-wallet` repository
+  contains the wallet application. Its current local service provides partial
+  read-only L1/L2 views; payment processing remains a later phase.
 - SilverForge has local token-tooling prototypes, including a separate static
-  frontend preview. The static frontend now includes an experimental,
-  identity-gated BTCS L2 local-node profile; it has no public L2 deployment
-  integration. The frontend has not been deployed, and neither prototype has
-  a verified public organization repository URL.
+  frontend preview. The public `SilverForge-Studio` and `btcs-l2` repositories
+  contain the corresponding development source. The static frontend includes an
+  experimental, identity-gated BTCS L2 local-node profile; it has no public L2
+  deployment integration. The frontend has not been independently deployed.
 - SilvEx CEX, SilvEx DEX, and SilvEx DEX Node are separate planned workstreams.
   No operational exchange, swap, or node service was found. OpenCEX has an
   Apache-2.0 license but is described by its maintainers as unmaintained and

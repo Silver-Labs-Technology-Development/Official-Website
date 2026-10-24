@@ -1,13 +1,13 @@
 export const projects = [
   {
     name: 'SilverPay',
-    category: 'Unified wallet, account & asset experience',
+    category: 'Unified wallet, account & payment services',
     status: 'Prototype',
     statusClass: 'prototype',
-    summary: 'SilverPay is one product: the wallet is its initial account and asset-management functionality. The existing service and web Studio provide partial read-only L1/L2 views; no separate mobile codebase was found.',
-    next: 'Continue the unified wallet foundation with separate L1/L2 account models, then add secure signing and recovery after review. Payment processing remains a later SilverPay phase.',
-    repo: null,
-    repoLabel: 'No separate public repository',
+    summary: 'SilverPay is one product encompassing its wallet and payment services; the wallet is not a separate product. The silver-wallet repository contains the wallet application. Its current service and web Studio provide partial read-only L1/L2 views; payment processing remains a later phase, and no separate mobile codebase was found.',
+    next: 'Continue the unified SilverPay foundation with separate L1/L2 account models, then add secure signing, recovery, and payment processing after review.',
+    repo: 'https://github.com/Silver-Labs-Technology-Development/silver-wallet',
+    repoLabel: 'SilverPay wallet app (silver-wallet)',
   },
   {
     name: 'SilverForge / BSNA',
@@ -15,7 +15,7 @@ export const projects = [
     status: 'Development',
     statusClass: 'development',
     summary: 'Two distinct local prototypes exist: the BTCS L2 Studio/asset service tests ERC-20 and proposed BSNA-FTS1 flows; the standalone static SilverForge preview constructs wallet-authorized Ethereum, BNB Chain, and Solana transactions, plus an experimental identity-gated BTCS L2 local-node profile. Its local suite passes 12/12 tests; no public BTCS L2 deployment is supported.',
-    next: 'Test the experimental BTCS L2 profile against a running isolated node, review external-chain transaction layouts, test wallet extensions on testnets, and establish the private source repository. Neither prototype is a public product or establishes finalized BSNA conformance.',
+    next: 'Test the experimental BTCS L2 profile against a running isolated node, review external-chain transaction layouts, and test wallet extensions on testnets. Neither prototype is a public product or establishes finalized BSNA conformance.',
     repo: 'https://github.com/Silver-Labs-Technology-Development/SilverForge-Studio',
     repoLabel: 'SilverForge-Studio',
   },
