@@ -66,8 +66,8 @@ export const projects = [
     statusClass: 'prototype',
     summary: 'The local engineering checkout contains an EVM harness, JSON-RPC, and an opt-in trusted single-operator development sequencer. A session report records focused deposit, settlement, chain-selection, reorg, and withdrawal tests passing locally.',
     next: 'The full L1-to-L2-to-withdrawal lifecycle is not proven; restart/reorg recovery and broader independent verification remain open. Sequencing is not mining.',
-    repo: 'https://github.com/Silver-Labs-Technology-Development/btcs-l2',
-    repoLabel: 'btcs-l2',
+    repo: 'https://github.com/Silver-Labs-Technology-Development/Silver-Labs-Bitcoin-Silver-Development/tree/silver-labs-l2',
+    repoLabel: 'Silver Labs L2 development branch',
   },
   {
     name: 'BTCS mining pool',

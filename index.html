@@ -108,12 +108,12 @@
             <div class="branch-grid">
               <article class="arch-node">
                 <span class="arch-icon" aria-hidden="true">01</span>
-                <div><h3>SilverPay</h3><p>Read-only L1/L2 account views; wallet actions are not implemented.</p></div>
+                <div><h3>SilverPay</h3><p>One wallet and payment-services product; its current Studio offers partial read-only L1/L2 account views.</p></div>
                 <span class="node-state">PARTIAL</span>
               </article>
               <article class="arch-node">
                 <span class="arch-icon" aria-hidden="true">02</span>
-                <div><h3>SilverForge</h3><p>Local token-creation frontends; no public source repository.</p></div>
+                <div><h3>SilverForge</h3><p>Local token-tooling prototypes with source in the public SilverForge-Studio repository and the BTCS L2 development branch.</p></div>
                 <span class="node-state">DEVELOPMENT</span>
               </article>
               <article class="arch-node arch-node-planned">
@@ -158,14 +158,14 @@
           <div class="details-grid">
             <article class="detail-card">
               <p class="detail-number">01 / WALLET</p><h3>SilverPay</h3>
-              <p>SilverPay is one product: the wallet is its initial account and asset-management functionality. The existing service and web Studio provide partial read-only L1/L2 views; no separate mobile codebase was found.</p>
-              <p class="detail-next"><strong>Next:</strong> advance the wallet foundation and establish a secure account/signing architecture. Payment processing is a later SilverPay milestone.</p>
+              <p>SilverPay is one product encompassing its wallet and payment services; the wallet is not a separate product. The public silver-wallet repository contains the wallet application. Its existing service and web Studio provide partial read-only L1/L2 views; payment processing remains a later phase, and no separate mobile codebase was found.</p>
+              <p class="detail-next"><strong>Next:</strong> advance the unified SilverPay foundation and establish a secure account/signing architecture before expanding wallet and payment capabilities.</p>
               <span class="status-pill status-prototype">PROTOTYPE · READ-ONLY FOUNDATION</span>
             </article>
             <article class="detail-card">
               <p class="detail-number">02 / ASSETS</p><h3>SilverForge &amp; BSNA</h3>
               <p>The local BTCS L2 Studio and asset service exercise ERC-20 and proposed BSNA-FTS1 flows. A separate static preview constructs wallet-authorized transactions for Ethereum, BNB Chain, and Solana, with an experimental BTCS L2 profile restricted to an identity-checked local development node.</p>
-              <p class="detail-next"><strong>Next:</strong> test the BTCS L2 profile against an isolated running node, verify external-chain transaction layouts with compatible wallets on test networks, and complete protocol review. No public BTCS L2 deployment is supported; the local frontend is not deployed and no public source repository exists.</p>
+              <p class="detail-next"><strong>Next:</strong> test the BTCS L2 profile against an isolated running node, verify external-chain transaction layouts with compatible wallets on test networks, and complete protocol review. No public BTCS L2 deployment is supported; the standalone frontend remains a local preview.</p>
               <span class="status-pill status-development">DEVELOPMENT · LOCAL PREVIEWS</span>
             </article>
             <article class="detail-card">
@@ -240,7 +240,7 @@
             <article class="roadmap-step">
               <span class="roadmap-state state-planned">PLANNED</span>
               <h3>Independent product services</h3>
-              <p>Private development repositories and shared contracts are still needed for SilverPay and SilverForge; an explorer and pool service have not been implemented.</p>
+              <p>Public development repositories are available for SilverPay, SilverForge, and shared platform tooling. BTCS L2 development lives on the silver-labs-l2 branch of the Bitcoin Silver repository. Their prototypes remain in development; an explorer and pool service have not been implemented.</p>
             </article>
             <article class="roadmap-step">
               <span class="roadmap-state state-research">UNRESOLVED RESEARCH</span>
@@ -256,7 +256,7 @@
           <div class="dev-intro">
             <p class="eyebrow">FOR DEVELOPERS</p>
             <h2>Start with the<br><span>source of truth.</span></h2>
-            <p>Explore the public Bitcoin Silver source fork and its build and security documentation. SilverPay, BTCS L2, and SilverForge prototypes do not yet have verified public source repositories; no private URLs are published here.</p>
+            <p>Explore the public Bitcoin Silver source and the verified SilverPay, SilverForge, BTCS L2 development branch, and shared-platform repository linked below. Project cards distinguish available development source from prototypes and planned work.</p>
             <a class="button button-light" href="https://github.com/Silver-Labs-Technology-Development/Silver-Labs-Bitcoin-Silver-Development" target="_blank" rel="noopener noreferrer">Open Bitcoin Silver / BTCS Core fork <span aria-hidden="true">↗</span></a>
           </div>
           <div class="dev-links">
@@ -264,7 +264,11 @@
             <a class="dev-link" href="https://github.com/Silver-Labs-Technology-Development/Silver-Labs-Bitcoin-Silver-Development/blob/main/INSTALL.md" target="_blank" rel="noopener noreferrer"><span><b>02</b> Build &amp; install guide</span><span aria-hidden="true">↗</span></a>
             <a class="dev-link" href="https://github.com/Silver-Labs-Technology-Development/Silver-Labs-Bitcoin-Silver-Development/blob/main/SECURITY.md" target="_blank" rel="noopener noreferrer"><span><b>03</b> Security reporting policy</span><span aria-hidden="true">↗</span></a>
             <a class="dev-link" href="https://github.com/Silver-Labs-Technology-Development" target="_blank" rel="noopener noreferrer"><span><b>04</b> Silver Labs on GitHub</span><span aria-hidden="true">↗</span></a>
-            <div class="dev-note"><strong>Prototype and contribution status</strong><p>Use the public Bitcoin Silver fork for available source and build instructions. Local SilverPay, BTCS L2, and SilverForge previews are not available as public downloads. No SilvEx exchange, pool, POW-S, or Silver Scan repository is currently linked.</p></div>
+            <a class="dev-link" href="https://github.com/Silver-Labs-Technology-Development/silver-wallet" target="_blank" rel="noopener noreferrer"><span><b>05</b> SilverPay wallet source</span><span aria-hidden="true">↗</span></a>
+            <a class="dev-link" href="https://github.com/Silver-Labs-Technology-Development/SilverForge-Studio" target="_blank" rel="noopener noreferrer"><span><b>06</b> SilverForge Studio source</span><span aria-hidden="true">↗</span></a>
+            <a class="dev-link" href="https://github.com/Silver-Labs-Technology-Development/Silver-Labs-Bitcoin-Silver-Development/tree/silver-labs-l2" target="_blank" rel="noopener noreferrer"><span><b>07</b> BTCS L2 development branch</span><span aria-hidden="true">↗</span></a>
+            <a class="dev-link" href="https://github.com/Silver-Labs-Technology-Development/silver-labs-platform" target="_blank" rel="noopener noreferrer"><span><b>08</b> Shared platform source</span><span aria-hidden="true">↗</span></a>
+            <div class="dev-note"><strong>Prototype and contribution status</strong><p>Use each linked repository's README for scope, setup, and current limitations. No SilvEx exchange, pool, POW-S, or Silver Scan source repository is currently published.</p></div>
           </div>
         </div>
       </section>

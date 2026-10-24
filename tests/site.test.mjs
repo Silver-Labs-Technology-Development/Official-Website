@@ -35,6 +35,11 @@ test('project status data covers requested systems without implying availability
   assert.ok(projects.every((project) => ['Prototype', 'Development', 'Planned', 'Research'].includes(project.status)))
   assert.ok(projects.every((project) => project.repo === null || project.repo.startsWith('https://github.com/Silver-Labs-Technology-Development/')))
   assert.ok(projects.every((project) => typeof project.next === 'string' && project.next.length > 0))
+  assert.equal(
+    projects.find((project) => project.name === 'SilverPay').repo,
+    'https://github.com/Silver-Labs-Technology-Development/silver-wallet',
+  )
+  assert.match(projects.find((project) => project.name === 'SilverPay').summary, /one product encompassing its wallet and payment services/)
 
   const exchangeProjects = projects.filter((project) => project.name.startsWith('SilvEx '))
   assert.equal(exchangeProjects.length, 3)
@@ -53,7 +58,15 @@ test('project details explain each distinct SilvEx workstream and development bo
   }
   assert.match(html, /No cross-network transfer or trustless L2 settlement is claimed/)
   assert.match(html, /no real-value trading is available/)
-  assert.match(html, /SilverForge previews are not available as public downloads/)
+  assert.match(html, /verified SilverPay, SilverForge, BTCS L2 development branch, and shared-platform repository/)
+  for (const repository of [
+    'silver-wallet',
+    'SilverForge-Studio',
+    'Silver-Labs-Bitcoin-Silver-Development/tree/silver-labs-l2',
+    'silver-labs-platform',
+  ]) assert.ok(html.includes(`https://github.com/Silver-Labs-Technology-Development/${repository}`))
+  assert.doesNotMatch(html, /github\.com\/Silver-Labs-Technology-Development\/btcs-l2/)
+  assert.doesNotMatch(html, /no public source repository exists|do not yet have verified public source repositories|not available as public downloads/)
   assert.match(html, /experimental BTCS L2 profile restricted to an identity-checked local development node/)
 })
 
