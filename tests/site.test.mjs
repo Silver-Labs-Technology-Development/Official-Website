@@ -37,7 +37,7 @@ test('project status data covers requested systems without implying availability
   assert.ok(projects.every((project) => typeof project.next === 'string' && project.next.length > 0))
   assert.equal(
     projects.find((project) => project.name === 'SilverPay').repo,
-    'https://github.com/Silver-Labs-Technology-Development/silver-wallet',
+    'https://github.com/Silver-Labs-Technology-Development/SilverPay',
   )
   assert.match(projects.find((project) => project.name === 'SilverPay').summary, /one product encompassing its wallet and payment services/)
 
@@ -79,7 +79,7 @@ test('project details explain each distinct SilvEx workstream and development bo
   assert.match(html, /unified installer and integrated GUI are targets, not available releases/)
   assert.match(html, /Planned repositories for SilvEx, Silver Scan, the pool, and POW-S contain scope documents only/)
   for (const repository of [
-    'silver-wallet',
+    'SilverPay',
     'SilverForge-Studio',
     'btcs-l2',
     'Silver-Labs-Bitcoin-Silver-Development/tree/silver-labs-l2',
@@ -102,7 +102,7 @@ test('developer quickstart gives clone and test commands for every public reposi
   for (const command of [
     'git clone https://github.com/Silver-Labs-Technology-Development/btcs-l2.git',
     'git clone https://github.com/Silver-Labs-Technology-Development/SilverForge-Studio.git',
-    'git clone https://github.com/Silver-Labs-Technology-Development/silver-wallet.git',
+    'git clone https://github.com/Silver-Labs-Technology-Development/SilverPay.git',
     'git clone https://github.com/Silver-Labs-Technology-Development/silver-labs-platform.git',
     'git clone https://github.com/Silver-Labs-Technology-Development/Silver-Labs-Bitcoin-Silver-Development.git',
     'npm ci',

@@ -53,7 +53,7 @@ website source; Actions currently publishes from `website-development`.
 - The public Silver Labs repository currently found for Bitcoin Silver is a
   fork of `bitcoin-silver/core`; it is not the separate BTCS L2 codebase.
 - SilverPay is one product encompassing its wallet and payment services; the
-  wallet is not a separate product. The public `silver-wallet` repository
+  wallet is not a separate product. The public `SilverPay` repository
   contains the wallet application. Its current local service provides partial
   read-only L1/L2 views; payment processing remains a later phase.
 - SilverForge has local token-tooling prototypes, including a separate static

@@ -4,10 +4,10 @@ export const projects = [
     category: 'Unified wallet, account & payment services',
     status: 'Prototype',
     statusClass: 'prototype',
-    summary: 'SilverPay is one product encompassing its wallet and payment services; the wallet is not a separate product. The silver-wallet repository contains the wallet application and its local folder is named SilverPay. Its current service and web Studio provide partial read-only L1/L2 views; payment processing remains a later phase, and no separate mobile codebase was found.',
+    summary: 'SilverPay is one product encompassing its wallet and payment services; the wallet is not a separate product. The SilverPay repository contains the wallet application and matches its local folder name. Its current service and web Studio provide partial read-only L1/L2 views; payment processing remains a later phase, and no separate mobile codebase was found.',
     next: 'Continue the unified SilverPay foundation with separate L1/L2 account models, then add secure signing, recovery, and payment processing after review.',
-    repo: 'https://github.com/Silver-Labs-Technology-Development/silver-wallet',
-    repoLabel: 'SilverPay wallet app (silver-wallet)',
+    repo: 'https://github.com/Silver-Labs-Technology-Development/SilverPay',
+    repoLabel: 'SilverPay wallet app',
   },
   {
     name: 'SilverForge / BSNA',
