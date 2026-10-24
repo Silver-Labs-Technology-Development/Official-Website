@@ -65,18 +65,19 @@ website source; Actions currently publishes from `website-development`.
   <https://silver-labs-technology-development.github.io/SilverForge-Studio/>.
   The repository's own Pages policy document still describes publishing as
   disabled, so that policy mismatch remains unresolved.
-- SilvEx CEX, SilvEx DEX, and SilvEx DEX Node are separate planned workstreams.
-  No operational exchange, swap, or node service was found. OpenCEX has an
-  Apache-2.0 license but is described by its maintainers as unmaintained and
-  as-is; it has not been adopted and is not suitable for real funds as-is.
-- Silver Scan has no dedicated indexer/explorer implementation. BTCS L2 Studio
-  has a bounded local L2 block/transaction view and block/transaction lookup,
-  but no address history, token/NFT indexing, L1 indexer, or reorg-aware
-  explorer service.
-- No BTCS pool service or POW-S implementation was found. Pool compatibility
-  with CKPool looks promising at source level but is not runtime-tested. CKPool
-  is GPL-3.0, so licensing and notice obligations require review before reuse.
-  L2 sequencing is not mining.
+- SilvEx CEX, SilvEx DEX, and SilvEx DEX Node are separate planned workstreams
+  with separate scope-only repositories. None contains an operational exchange,
+  swap, or node service. OpenCEX has an Apache-2.0 license but is described by
+  its maintainers as unmaintained and as-is; it has not been adopted and is not
+  suitable for real funds as-is.
+- Silver Scan has a planned scope repository but no dedicated
+  indexer/explorer implementation. BTCS L2 Studio has a bounded local L2
+  block/transaction view and block/transaction lookup, but no address history,
+  token/NFT indexing, L1 indexer, or reorg-aware explorer service.
+- The BTCS Mining Pool and POW-S have planned scope repositories but no
+  implementation. Pool compatibility with CKPool looks promising at source
+  level but is not runtime-tested. CKPool is GPL-3.0, so licensing and notice
+  obligations require review before reuse. L2 sequencing is not mining.
 - Website project cards distinguish local prototypes from planned systems and
   link only verified public repositories. They do not publish private source
   links or claim real-value exchange, cross-network transfer, or trustless L2

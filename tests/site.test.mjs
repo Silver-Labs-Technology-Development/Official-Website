@@ -43,7 +43,23 @@ test('project status data covers requested systems without implying availability
 
   const exchangeProjects = projects.filter((project) => project.name.startsWith('SilvEx '))
   assert.equal(exchangeProjects.length, 3)
-  assert.ok(exchangeProjects.every((project) => project.status === 'Planned' && project.repo === null))
+  assert.ok(exchangeProjects.every((project) => project.status === 'Planned'))
+  for (const [name, repository] of [
+    ['SilvEx CEX', 'SilvEx-CEX'],
+    ['SilvEx DEX', 'SilvEx-DEX'],
+    ['SilvEx DEX Node', 'SilvEx-DEX-Node'],
+    ['Silver Scan', 'Silver-Scan'],
+    ['BTCS mining pool', 'BTCS-Mining-Pool'],
+    ['POW-S', 'POW-S'],
+  ]) {
+    const project = projects.find((candidate) => candidate.name === name)
+    assert.equal(
+      project.repo,
+      `https://github.com/Silver-Labs-Technology-Development/${repository}`,
+      `unexpected repository for ${name}`,
+    )
+    assert.match(project.repoLabel, /no implementation/)
+  }
   assert.match(projects.find((project) => project.name === 'SilvEx CEX').summary, /not been adopted/)
   assert.match(projects.find((project) => project.name === 'SilverForge / BSNA').summary, /local prototypes/)
   assert.match(projects.find((project) => project.name === 'SilverForge / BSNA').summary, /identity-gated BTCS L2 local-node profile/)
@@ -61,6 +77,7 @@ test('project details explain each distinct SilvEx workstream and development bo
   assert.match(html, /public Bitcoin Silver source plus the SilverPay, SilverForge, BTCS L2, and shared-platform repositories/)
   assert.match(html, /one coordinated BTCS installation with an integrated GUI/)
   assert.match(html, /unified installer and integrated GUI are targets, not available releases/)
+  assert.match(html, /Planned repositories for SilvEx, Silver Scan, the pool, and POW-S contain scope documents only/)
   for (const repository of [
     'silver-wallet',
     'SilverForge-Studio',
