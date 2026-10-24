@@ -163,6 +163,20 @@ h2 span { color: #888f94; }
 .dev-note { margin-top: 23px; padding: 17px; border: 1px solid rgba(255, 255, 255, .16); }
 .dev-note strong { font-size: 11px; }
 .dev-note p { margin: 8px 0 0; color: #c4c9cc; font-size: 11px; line-height: 1.7; }
+
+.quickstart { margin-top: 58px; padding-top: 34px; border-top: 1px solid rgba(255, 255, 255, .19); }
+.quickstart-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 36px; align-items: end; margin-bottom: 24px; }
+.quickstart-head .eyebrow { grid-column: 1 / -1; margin-bottom: -22px; }
+.quickstart-head h3 { margin: 0; color: var(--white); font-size: 27px; letter-spacing: -.035em; }
+.quickstart-head > p:last-child { max-width: 560px; margin: 0; color: #c0c6ca; font-size: 12px; line-height: 1.75; }
+.quickstart-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.quickstart-card { min-width: 0; padding: 18px; border: 1px solid rgba(255, 255, 255, .16); background: rgba(255, 255, 255, .025); }
+.quickstart-card h4 { margin: 0 0 8px; color: var(--white); font-size: 14px; letter-spacing: -.02em; }
+.quickstart-card p { min-height: 48px; margin: 0 0 12px; color: #bfc6ca; font-size: 11px; line-height: 1.65; }
+.quickstart-card pre { min-height: 118px; margin: 0; padding: 12px; overflow-x: auto; border: 1px solid rgba(255, 255, 255, .12); background: #15191c; }
+.quickstart-card code { padding: 0; color: #d8e4ee; background: transparent; font-size: 10px; line-height: 1.65; white-space: pre; }
+.quickstart-card-note { background: rgba(22, 119, 210, .09); }
+.quickstart-card-note p { min-height: 0; margin: 0; }
 code { padding: 2px 4px; color: inherit; background: rgba(120, 130, 140, .14); font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: .95em; }
 
 .about { background: var(--white); }
@@ -186,6 +200,9 @@ code { padding: 2px 4px; color: inherit; background: rgba(120, 130, 140, .14); f
   .architecture-warning { width: 100%; margin-left: 0; }
   .roadmap-grid { grid-template-columns: repeat(2, 1fr); }
   .dev-layout { gap: 45px; }
+  .quickstart-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .quickstart-head { grid-template-columns: 1fr; gap: 12px; }
+  .quickstart-head .eyebrow { margin-bottom: 0; }
 }
 @media (max-width: 640px) {
   html { scroll-padding-top: 70px; }
@@ -230,6 +247,8 @@ code { padding: 2px 4px; color: inherit; background: rgba(120, 130, 140, .14); f
   .roadmap-step { min-height: 0; }
   .roadmap-step h3 { margin-top: 19px; }
   .dev-layout { grid-template-columns: 1fr; gap: 34px; }
+  .quickstart-grid { grid-template-columns: 1fr; }
+  .quickstart-card p { min-height: 0; }
   .footer-top { min-height: 0; align-items: flex-start; flex-direction: column; padding-block: 26px; }
   .footer-bottom { min-height: 0; align-items: flex-start; flex-direction: column; padding-block: 17px; }
 }

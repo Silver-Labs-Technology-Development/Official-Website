@@ -58,10 +58,10 @@ website source; Actions currently publishes from `website-development`.
   read-only L1/L2 views; payment processing remains a later phase.
 - SilverForge has local token-tooling prototypes, including a separate static
   frontend preview. The public `SilverForge-Studio` repository and the
-  `silver-labs-l2` branch of `Silver-Labs-Bitcoin-Silver-Development` contain
-  the corresponding development source. The static frontend includes an
-  experimental, identity-gated BTCS L2 local-node profile; it has no public L2
-  deployment integration. The frontend has not been independently deployed.
+  `btcs-l2` repository contain the corresponding development source. The
+  static frontend includes an experimental, identity-gated BTCS L2 local-node
+  profile; it has no public L2 deployment integration. The frontend has not
+  been independently deployed.
 - SilvEx CEX, SilvEx DEX, and SilvEx DEX Node are separate planned workstreams.
   No operational exchange, swap, or node service was found. OpenCEX has an
   Apache-2.0 license but is described by its maintainers as unmaintained and

@@ -58,16 +58,36 @@ test('project details explain each distinct SilvEx workstream and development bo
   }
   assert.match(html, /No cross-network transfer or trustless L2 settlement is claimed/)
   assert.match(html, /no real-value trading is available/)
-  assert.match(html, /verified SilverPay, SilverForge, BTCS L2 development branch, and shared-platform repository/)
+  assert.match(html, /public Bitcoin Silver source plus the SilverPay, SilverForge, BTCS L2, and shared-platform repositories/)
   for (const repository of [
     'silver-wallet',
     'SilverForge-Studio',
-    'Silver-Labs-Bitcoin-Silver-Development/tree/silver-labs-l2',
+    'btcs-l2',
     'silver-labs-platform',
   ]) assert.ok(html.includes(`https://github.com/Silver-Labs-Technology-Development/${repository}`))
-  assert.doesNotMatch(html, /github\.com\/Silver-Labs-Technology-Development\/btcs-l2/)
+  assert.doesNotMatch(html, /Silver-Labs-Bitcoin-Silver-Development\/tree\/silver-labs-l2/)
   assert.doesNotMatch(html, /no public source repository exists|do not yet have verified public source repositories|not available as public downloads/)
   assert.match(html, /experimental BTCS L2 profile restricted to an identity-checked local development node/)
+  assert.equal(
+    projects.find((project) => project.name === 'BTCS L2').repo,
+    'https://github.com/Silver-Labs-Technology-Development/btcs-l2',
+  )
+})
+
+test('developer quickstart gives clone and test commands for every public repository', () => {
+  assert.match(html, /DEVELOPER QUICKSTART/)
+  for (const command of [
+    'git clone https://github.com/Silver-Labs-Technology-Development/btcs-l2.git',
+    'git clone https://github.com/Silver-Labs-Technology-Development/SilverForge-Studio.git',
+    'git clone https://github.com/Silver-Labs-Technology-Development/silver-wallet.git',
+    'git clone https://github.com/Silver-Labs-Technology-Development/silver-labs-platform.git',
+    'git clone https://github.com/Silver-Labs-Technology-Development/Silver-Labs-Bitcoin-Silver-Development.git',
+    'npm ci',
+    'npm test',
+    'npm run check:types',
+  ]) assert.ok(html.includes(command), `missing quickstart command: ${command}`)
+  assert.doesNotMatch(html, /\/home\/user\//)
+  assert.match(css, /\.quickstart-grid\s*\{[^}]*grid-template-columns/)
 })
 
 test('external links use the verified Silver Labs organization and documented paths', () => {

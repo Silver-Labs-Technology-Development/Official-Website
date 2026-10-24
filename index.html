@@ -240,7 +240,7 @@
             <article class="roadmap-step">
               <span class="roadmap-state state-planned">PLANNED</span>
               <h3>Independent product services</h3>
-              <p>Public development repositories are available for SilverPay, SilverForge, and shared platform tooling. BTCS L2 development lives on the silver-labs-l2 branch of the Bitcoin Silver repository. Their prototypes remain in development; an explorer and pool service have not been implemented.</p>
+              <p>Public development repositories are available for SilverPay, SilverForge, BTCS L2, and shared platform tooling. Each repository has its own scope, tests, and limitations. An explorer and pool service have not been implemented.</p>
             </article>
             <article class="roadmap-step">
               <span class="roadmap-state state-research">UNRESOLVED RESEARCH</span>
@@ -256,7 +256,7 @@
           <div class="dev-intro">
             <p class="eyebrow">FOR DEVELOPERS</p>
             <h2>Start with the<br><span>source of truth.</span></h2>
-            <p>Explore the public Bitcoin Silver source and the verified SilverPay, SilverForge, BTCS L2 development branch, and shared-platform repository linked below. Project cards distinguish available development source from prototypes and planned work.</p>
+            <p>Explore the public Bitcoin Silver source plus the SilverPay, SilverForge, BTCS L2, and shared-platform repositories linked below. Every project is a separate Git repository; clone only what you need and read its README before running it.</p>
             <a class="button button-light" href="https://github.com/Silver-Labs-Technology-Development/Silver-Labs-Bitcoin-Silver-Development" target="_blank" rel="noopener noreferrer">Open Bitcoin Silver / BTCS Core fork <span aria-hidden="true">↗</span></a>
           </div>
           <div class="dev-links">
@@ -266,9 +266,66 @@
             <a class="dev-link" href="https://github.com/Silver-Labs-Technology-Development" target="_blank" rel="noopener noreferrer"><span><b>04</b> Silver Labs on GitHub</span><span aria-hidden="true">↗</span></a>
             <a class="dev-link" href="https://github.com/Silver-Labs-Technology-Development/silver-wallet" target="_blank" rel="noopener noreferrer"><span><b>05</b> SilverPay wallet source</span><span aria-hidden="true">↗</span></a>
             <a class="dev-link" href="https://github.com/Silver-Labs-Technology-Development/SilverForge-Studio" target="_blank" rel="noopener noreferrer"><span><b>06</b> SilverForge Studio source</span><span aria-hidden="true">↗</span></a>
-            <a class="dev-link" href="https://github.com/Silver-Labs-Technology-Development/Silver-Labs-Bitcoin-Silver-Development/tree/silver-labs-l2" target="_blank" rel="noopener noreferrer"><span><b>07</b> BTCS L2 development branch</span><span aria-hidden="true">↗</span></a>
+            <a class="dev-link" href="https://github.com/Silver-Labs-Technology-Development/btcs-l2" target="_blank" rel="noopener noreferrer"><span><b>07</b> BTCS L2 source</span><span aria-hidden="true">↗</span></a>
             <a class="dev-link" href="https://github.com/Silver-Labs-Technology-Development/silver-labs-platform" target="_blank" rel="noopener noreferrer"><span><b>08</b> Shared platform source</span><span aria-hidden="true">↗</span></a>
             <div class="dev-note"><strong>Prototype and contribution status</strong><p>Use each linked repository's README for scope, setup, and current limitations. No SilvEx exchange, pool, POW-S, or Silver Scan source repository is currently published.</p></div>
+          </div>
+        </div>
+
+        <div class="container quickstart">
+          <div class="quickstart-head">
+            <p class="eyebrow">DEVELOPER QUICKSTART</p>
+            <h3>Clone, install, test.</h3>
+            <p>These commands are taken from the current repositories. BTCS L2 requires Node.js 24.17.0. The wallet and SilverForge require Node.js 20.18.0 or newer. Use a disposable local node and test accounts; no command here publishes to a production network.</p>
+          </div>
+          <div class="quickstart-grid">
+            <article class="quickstart-card">
+              <h4>BTCS L2</h4>
+              <p>EVM harness, settlement, deposits, withdrawals, and local RPC.</p>
+              <pre><code>git clone https://github.com/Silver-Labs-Technology-Development/btcs-l2.git
+cd btcs-l2/execution/evm
+npm ci
+npm test</code></pre>
+            </article>
+            <article class="quickstart-card">
+              <h4>SilverForge Studio</h4>
+              <p>Token creation frontend with EVM, Solana, and local BTCS L2 profiles.</p>
+              <pre><code>git clone https://github.com/Silver-Labs-Technology-Development/SilverForge-Studio.git
+cd SilverForge-Studio
+npm ci
+npm test
+npm run build</code></pre>
+            </article>
+            <article class="quickstart-card">
+              <h4>SilverPay wallet</h4>
+              <p>Read-only wallet and asset views for the local BTCS L2 profile.</p>
+              <pre><code>git clone https://github.com/Silver-Labs-Technology-Development/silver-wallet.git
+cd silver-wallet
+npm ci
+npm test
+npm run build</code></pre>
+            </article>
+            <article class="quickstart-card">
+              <h4>Shared platform</h4>
+              <p>Read-only L2 client, network identity schema, and repository tooling.</p>
+              <pre><code>git clone https://github.com/Silver-Labs-Technology-Development/silver-labs-platform.git
+cd silver-labs-platform/packages/btcs-l2-client
+npm ci
+npm test
+npm run check:types</code></pre>
+            </article>
+            <article class="quickstart-card">
+              <h4>BTCS Core</h4>
+              <p>Bitcoin Silver L1 node, RPC, and desktop wallet source.</p>
+              <pre><code>git clone https://github.com/Silver-Labs-Technology-Development/Silver-Labs-Bitcoin-Silver-Development.git
+cd Silver-Labs-Bitcoin-Silver-Development
+cmake -B build
+cmake --build build -j"$(nproc)"</code></pre>
+            </article>
+            <article class="quickstart-card quickstart-card-note">
+              <h4>Before contributing</h4>
+              <p>Read the repository README and security policy. Keep changes small. Run the documented tests. Do not commit private keys, seed phrases, <code>.env</code> files, wallet data, or local chain databases. Open an issue before starting bridge, custody, or settlement changes.</p>
+            </article>
           </div>
         </div>
       </section>
