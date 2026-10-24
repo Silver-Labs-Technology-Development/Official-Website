@@ -44,8 +44,8 @@ No custom domain is configured.
 GitHub Pages serves the static output only. It does not provide the website
 with a database, private API, RPC service, or backend execution environment.
 The live site was verified after a successful Actions deployment from
-`website-development`. The legacy placeholder remains only on the default
-`main` branch and is not the published Pages source.
+`website-development`. The `main` branch is kept in sync with the verified
+website source; Actions currently publishes from `website-development`.
 
 ## Status and source-link policy
 
