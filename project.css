@@ -1,0 +1,37 @@
+/* Shared product-detail layout. Design language pairs with info.css. */
+body.project-page{background:#0c131b;color:#f3f6fb}
+.project-page .top{background:#101923;border-color:#344458}
+.project-main{max-width:1130px;margin:auto;padding:25px clamp(19px,4vw,48px) 85px}
+.breadcrumb{display:flex;gap:12px;align-items:center;color:#93aabe;font-size:12px;margin:7px 0 26px;flex-wrap:wrap}
+.breadcrumb a{color:#b4c9d9}
+.project-hero{padding:44px clamp(22px,4vw,48px);border-radius:18px;background:radial-gradient(circle at 94% 10%,#29425b 0%,transparent 40%),linear-gradient(140deg,#17283c,#101c2c);border:1px solid #3a5267;position:relative;overflow:hidden}
+.project-hero:after{content:"";position:absolute;width:330px;height:330px;border:1px solid #30485f;border-radius:50%;right:-130px;top:-90px;pointer-events:none}
+.project-hero .kicker{color:#d4b47a}
+.hero-layout{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(210px,.8fr);gap:32px;align-items:start}
+.project-hero h1{font-size:clamp(43px,5.5vw,70px);letter-spacing:-.06em;margin:4px 0 12px}
+.project-strapline{max-width:670px;font-size:clamp(18px,2.2vw,23px);line-height:1.4;color:#e1e9f1;font-weight:550}
+.project-intro{max-width:850px;color:#c6d7e6;line-height:1.83;font-size:15px;margin:25px 0 22px}
+.project-stage{background:#122030c7;border:1px solid #4a6177;border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:8px}
+.project-stage span,.project-stage small{font-size:11px;color:#afc1d0;line-height:1.5}
+.project-stage strong{font-size:16px;color:#f4d9a5;line-height:1.3}
+.project-actions{display:flex;gap:10px;flex-wrap:wrap}
+.project-action{display:inline-block;border:1px solid #6b859c;border-radius:8px;color:#fff;padding:11px 17px;font-size:12px;text-decoration:none;font-weight:730}
+.project-action:hover{color:white;text-decoration:underline}
+.project-action.action-primary{background:#1677d2;border-color:#1677d2}
+.project-action.action-outline{background:#ffffff12}
+.project-main section{padding:38px 4px 34px;border-bottom:1px solid #26384a}
+.section-label>span{display:block;color:#b8a379;font-size:11px;letter-spacing:.13em;font-weight:780}
+.section-label h2{font-size:clamp(24px,3vw,31px);margin:8px 0 19px;color:#f3f6fb;letter-spacing:-.04em}
+.project-main section>p{max-width:920px;line-height:1.78;font-size:15px}
+.project-main ul{max-width:950px;list-style:none;padding:0;display:grid;gap:11px}
+.project-main li{position:relative;margin:0;padding:15px 18px 15px 43px;background:#122032;border:1px solid #293e51;border-radius:10px;line-height:1.7;color:#c5d4e2}
+.project-main li:before{content:"✓";position:absolute;left:18px;top:16px;color:#86cfb6;font-weight:900}
+.project-main .caution{margin-top:17px;padding:13px 17px;border-left:2px solid #d3b275;background:#24273a;font-size:12px;color:#d9deeb}
+.project-columns{display:grid;grid-template-columns:1fr 1fr;gap:25px}
+.project-columns section{border-bottom:1px solid #26384a}
+.project-columns p{color:#c5d4e2}
+.project-main .eta{color:#f2dab0;font-size:17px;font-weight:650}
+.project-end{margin-top:35px;border:1px solid #43627d;border-radius:14px;padding:31px;background:linear-gradient(130deg,#172f49,#122232)}
+.project-end h2{color:#fff;margin:0 0 10px;font-size:30px}.project-end p{color:#c7d5e2}
+.project-page footer{border-color:#26384a}
+@media(max-width:780px){.hero-layout,.project-columns{grid-template-columns:1fr}.project-hero{padding:28px 22px}.project-stage{max-width:100%}.project-main{padding-left:18px;padding-right:18px}.project-main section{padding:27px 2px}}
