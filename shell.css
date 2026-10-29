@@ -121,3 +121,29 @@ body.project-page .project-main{color:var(--ink)}
 .topic-card{padding:20px}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* Link behavior and accessible contrast in formerly mismatched page layouts. */
+.project-card .project-title-link{color:var(--ink);text-decoration:none}
+.project-card .project-title-link:hover{color:var(--accent)}
+.arch-node.arch-link{color:inherit;text-decoration:none;transition:transform .14s ease,border-color .14s ease}
+.arch-node.arch-link:hover{transform:translateY(-2px);border-color:var(--gold-light)}
+.arch-node.arch-link:focus-visible{outline-color:var(--gold-light)}
+.project-page .project-hero h1{color:#fff}
+.project-page .project-main .project-hero h1,.project-page .project-main .project-end h2{color:#fff}
+.project-page .project-hero .project-action.action-outline,.project-page .project-end .project-action.action-outline{color:#fff}
+.project-page .project-main .directory-hero h1{color:var(--ink)}
+.project-page .directory-hero .kicker{color:var(--gold)}
+.project-page .growth-hero .kicker{color:var(--gold-light)}
+.project-page .project-main .growth-hero h1{color:#fff}
+.project-page .project-main .growth-hero .caution{color:#5d4a20}
+.project-page .project-main .growth-billboard h2{color:#fff}
+.project-page .growth-billboard aside span{color:#c5d4df}
+.project-page .growth-billboard aside strong{color:#fff}
+.project-page .growth-steps>article b{color:#9b792d}
+.project-page .project-main .growth-steps h3{color:var(--ink)}
+.project-page .project-main .growth-steps p{color:var(--muted)}
+.project-page .project-main .growth-example b{color:var(--ink)}
+.project-page .growth-packages th{background:var(--charcoal)}
+.project-page .growth-packages th,.project-page .growth-packages td{border-color:var(--line)}
+.project-page .project-main .growth-hero .project-action.action-outline{color:#fff}
+.project-page .project-main .growth-billboard .preview-tag{display:inline-block;color:#f0dcad;font-weight:720;font-size:12px;margin-top:10px}
