@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#111315">
-    <meta name="description" content="Silver Labs Technology & Development builds open, carefully scoped tools across Bitcoin Silver, BTCS L2, wallets, and digital assets.">
-    <title>Silver Labs — Building the BTCS ecosystem</title>
+    <meta name="description" content="Silver Labs builds mining, research, wallet, exchange and asset infrastructure. Explore Silver Pool, Silver Scan, SilverPay, SilverForge, SilvEx and BTCS L2.">
+    <title>Silver Labs — Mining, Markets, Wallets and Web3 Infrastructure</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23111315'/%3E%3Cpath d='M44 17H25a11 11 0 0 0 0 22h14a4 4 0 0 1 0 8H18' fill='none' stroke='%23d8dadd' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
     <link rel="stylesheet" href="styles.css">
     <script type="module" src="site.mjs"></script>
@@ -25,6 +25,7 @@
         </button>
         <nav id="primary-navigation" class="primary-navigation" aria-label="Primary navigation">
           <a href="#ecosystem">Ecosystem</a>
+          <a href="#research">Silver Scan</a>
           <a href="#architecture">Architecture</a>
           <a href="#roadmap">Roadmap</a>
           <a href="#developers">Developers</a>
@@ -38,8 +39,8 @@
         <div class="hero-grid" aria-hidden="true"></div>
         <div class="container hero-content">
           <p class="eyebrow"><span class="status-dot"></span> INDEPENDENT ENGINEERING · DEVELOPER PREVIEW</p>
-          <h1>Building the<br><span>BTCS ecosystem.</span></h1>
-          <p class="hero-copy">Silver Labs explores practical infrastructure for Bitcoin Silver—from the L1 node to local EVM experiments, developer tools, and wallet experiences.</p>
+          <h1>Building the<br><span>Silver Labs ecosystem.</span></h1>
+          <p class="hero-copy">One connected development ecosystem: Silver Pool for mining, Silver Scan for multi-coin research, SilverPay wallets, SilverForge asset creation, SilvEx trading infrastructure and BTCS L2. Bitcoin Silver is our starting point, not our limit.</p>
           <div class="hero-actions">
             <a class="button button-light" href="#ecosystem">Explore the ecosystem <span aria-hidden="true">↓</span></a>
             <a class="button button-outline" href="#developers">Build with us</a>
@@ -66,7 +67,7 @@
               <p class="eyebrow">THE ECOSYSTEM</p>
               <h2>Connected by design.<br><span>Independent in status.</span></h2>
             </div>
-            <p class="section-aside">Some foundations are being tested in local development. Other products are planned and have scope repositories, but no implementation.</p>
+            <p class="section-aside">Our products have independent development milestones. Published code, local tests and public launches are clearly distinguished; no unfinished trading or payout services are presented as operational.</p>
           </div>
           <div id="project-grid" class="project-grid" aria-live="polite"></div>
           <noscript><p class="noscript-note">Enable JavaScript to view the project directory. Project status and links are maintained in <code>projects.mjs</code>.</p></noscript>
@@ -118,17 +119,17 @@
               </article>
               <article class="arch-node arch-node-planned">
                 <span class="arch-icon" aria-hidden="true">03</span>
-                <div><h3>SilvEx</h3><p>Planned repositories define the CEX, DEX, and DEX Node boundaries; no exchange implementation exists.</p></div>
+                <div><h3>SilvEx</h3><p>A development trading terminal and DEX prototypes exist; live matching, swaps and custody are not verified.</p></div>
                 <span class="node-state">PLANNED</span>
               </article>
               <article class="arch-node arch-node-planned">
                 <span class="arch-icon" aria-hidden="true">04</span>
-                <div><h3>Silver Scan</h3><p>A planned repository exists; no indexing or explorer service is implemented.</p></div>
+                <div><h3>Silver Scan</h3><p>A BTCS L1 explorer/indexer prototype exists; Markets, Coin Watch and DEX research are in development.</p></div>
                 <span class="node-state">PLANNED</span>
               </article>
               <article class="arch-node arch-node-planned">
                 <span class="arch-icon" aria-hidden="true">05</span>
-                <div><h3>BTCS pool</h3><p>A planned repository exists; no pool, share, or payout service is implemented.</p></div>
+                <div><h3>BTCS pool</h3><p>BTCS Stratum, share validation, accounting and API are locally tested; public connections and payouts are not verified.</p></div>
                 <span class="node-state">PLANNED</span>
               </article>
               <article class="arch-node arch-node-planned">
@@ -174,36 +175,16 @@
               <p class="detail-next"><strong>Next:</strong> verify the full L1-to-L2-to-withdrawal lifecycle and improve restart, recovery, and reorganization behavior.</p>
               <span class="status-pill status-prototype">PROTOTYPE · LOCAL CHECKOUT</span>
             </article>
-            <article class="detail-card">
-              <p class="detail-number">04 / CENTRALIZED EXCHANGE</p><h3>SilvEx CEX</h3>
-              <p>A planned repository records the product boundary only. No exchange account, custody, matching, deposit, or withdrawal implementation exists. OpenCEX is only an upstream candidate under assessment; no real-value trading is available.</p>
-              <p class="detail-next"><strong>Next:</strong> finish upstream license, security, and architecture review before deciding whether to adopt or build.</p>
-              <span class="status-pill status-planned">PLANNED · NO TRADING</span>
-            </article>
-            <article class="detail-card">
-              <p class="detail-number">05 / DECENTRALIZED EXCHANGE</p><h3>SilvEx DEX</h3>
-              <p>A planned repository records the non-custodial exchange boundary only. No supported pool, quote route, or reviewed swap contract has been verified. There is no executable swap or market destination.</p>
-              <p class="detail-next"><strong>Next:</strong> select a supported chain and reviewed protocol, then demonstrate a reproducible testnet swap before exposing trading interfaces.</p>
-              <span class="status-pill status-planned">PLANNED · NO SWAPS</span>
-            </article>
+            <article class="detail-card"><p class="detail-number">04 / EXCHANGE</p><h3>SilvEx</h3><p>SilvEx has a development trading terminal with charting and read-only external market data. Reference provider volume is not native SilvEx executed volume. Production custody, matching, deposits and withdrawals are not verified.</p><p class="detail-next"><strong>Next:</strong> secure administration, implement and validate the matching, ledger and wallet boundaries before real-value trading.</p><span class="status-pill status-development">DEVELOPMENT · NO LIVE TRADING</span></article>
+            <article class="detail-card"><p class="detail-number">05 / DEX</p><h3>SilvEx DEX</h3><p>On-chain contract prototypes are separate from the Silver Scan DEX research interface. Searching external pairs is not an executable SilvEx swap or a claim of token verification.</p><p class="detail-next"><strong>Next:</strong> verify a testnet swap, quote service and contract security before showing supported routes.</p><span class="status-pill status-development">DEVELOPMENT · NO PUBLIC SWAPS</span></article>
             <article class="detail-card">
               <p class="detail-number">06 / EXCHANGE INFRASTRUCTURE</p><h3>SilvEx DEX Node</h3>
               <p>A planned repository records the service boundary only. No independently deployable indexer, router, quote service, or DEX node exists. Centralized exchange services and on-chain DEX infrastructure are separate systems.</p>
               <p class="detail-next"><strong>Next:</strong> define the minimum services for a verified DEX design, including stale-data and reorganization handling.</p>
               <span class="status-pill status-planned">PLANNED · NO NODE SERVICE</span>
             </article>
-            <article class="detail-card">
-              <p class="detail-number">07 / EXPLORER</p><h3>Silver Scan</h3>
-              <p>A planned repository records the explorer boundary only. No independent indexer or explorer implementation exists. Node RPCs and Studio views are not a substitute for a maintained explorer.</p>
-              <p class="detail-next"><strong>Next:</strong> define indexed data, bounded read APIs, pagination, and reorganization behavior.</p>
-              <span class="status-pill status-planned">PLANNED · NO CODEBASE</span>
-            </article>
-            <article class="detail-card">
-              <p class="detail-number">08 / MINING</p><h3>BTCS mining pool</h3>
-              <p>A planned repository records the pool boundary only. BTCS Core exposes node mining interfaces, but no separate pool service, Stratum share validation, payout accounting, or pool operations exist; compatibility with ckpool is under investigation.</p>
-              <p class="detail-next"><strong>Next:</strong> verify BTCS proof-of-work and block-template requirements before selecting or adapting a pool implementation. Pool mining is distinct from L2 sequencing.</p>
-              <span class="status-pill status-planned">PLANNED · NO POOL SERVICE</span>
-            </article>
+            <article class="detail-card"><p class="detail-number">07 / RESEARCH &amp; EXPLORER</p><h3>Silver Scan</h3><p>Silver Scan already contains a BTCS L1 Python explorer, RPC block/transaction lookup, address views and SQLite indexing. It is expanding into a multi-coin research terminal with Markets, Coin Watch, provider-backed data and DEX Scan. The current public frontend does not imply a production indexer or live provider backend.</p><p class="detail-next"><strong>Next:</strong> complete real provider UI and source timestamps, harden chain reorgs and indexing, then add verified Silver Pool and BTCS L2 connections.</p><span class="status-pill status-development">DEVELOPMENT · NOT A FULL MULTICHAIN INDEXER</span></article>
+            <article class="detail-card"><p class="detail-number">08 / MINING</p><h3>Silver Pool</h3><p>Silver Pool has a locally verified BTCS Stratum V1 server, node template integration, share validation, PPLNS accounting and a ten-page website. Cloudflare frontend work is separate from the pool API. Public Stratum access, third-party miner shares and secure payouts remain unverified.</p><p class="detail-next"><strong>Next:</strong> connect public API hosting, verify a real miner, complete backups/monitoring and audit payout infrastructure before operating a paying pool.</p><span class="status-pill status-development">DEVELOPMENT · PAYOUTS DISABLED</span></article>
             <article class="detail-card">
               <p class="detail-number">09 / COMPUTE</p><h3>POW-S</h3>
               <p>A planned research repository exists, but no POW-S implementation, customer model, or supported API has been defined.</p>
@@ -218,6 +199,8 @@
           </div>
         </div>
       </section>
+
+      <section id="research" class="intro section-pad"><div class="container intro-grid"><p class="eyebrow">SILVER SCAN RESEARCH TERMINAL</p><div><h2>More than a block explorer.<br><span>Markets, watchlists and DEX discovery.</span></h2><p class="body-large">The Silver Scan direction includes searchable coin markets, Coin Watch, verified BTCS L1 exploration, pool statistics and DEX Scan. Every price, market metric and external trade volume must show its provider and freshness, with chain and contract IDs where relevant.</p><p>The existing explorer is a development prototype; not all research features or public APIs are deployed. Discovery is informational only and does not imply exchange listing or supported swaps.</p><a class="button button-light" href="https://github.com/Silver-Labs-Technology-Development/Silver-Scan" target="_blank" rel="noopener noreferrer">Open Silver Scan development <span aria-hidden="true">↗</span></a></div></div></section>
 
       <section id="roadmap" class="roadmap section-pad">
         <div class="container">
@@ -239,13 +222,13 @@
             </article>
             <article class="roadmap-step">
               <span class="roadmap-state state-planned">PLANNED</span>
-              <h3>Independent product services</h3>
-              <p>Public development repositories are available for SilverPay, SilverForge, BTCS L2, shared platform tooling, and the planned product scopes. Each repository has its own scope, tests, and limitations; a unified Core+L2 installer is a future product goal. An explorer and pool service have not been implemented.</p>
+              <h3>Independent product development</h3>
+              <p>Public development repositories are available for SilverPay, SilverForge, BTCS L2, shared platform tooling, and the planned product scopes. Each repository has its own scope, tests, and limitations; a unified Core+L2 installer is a future product goal. Silver Scan and Silver Pool have separate prototype implementations; public integrations remain incomplete.</p>
             </article>
             <article class="roadmap-step">
               <span class="roadmap-state state-research">UNRESOLVED RESEARCH</span>
-              <h3>SilvEx, pool, and POW-S</h3>
-              <p>CEX, DEX, DEX Node, pool, and POW-S each need verified designs and dedicated engineering. No operational capability is claimed.</p>
+              <h3>SilvEx, DEX, and POW-S</h3>
+              <p>SilvEx, DEX, POW-S and the multi-coin pool rollout still need verified integrations and security controls before public operation.</p>
             </article>
           </div>
         </div>
@@ -256,7 +239,7 @@
           <div class="dev-intro">
             <p class="eyebrow">FOR DEVELOPERS</p>
             <h2>Start with the<br><span>source of truth.</span></h2>
-            <p>Explore the public Bitcoin Silver source plus the SilverPay, SilverForge, BTCS L2, and shared-platform repositories linked below. Separate planned repositories record the scope of SilvEx, Silver Scan, the mining pool, and POW-S; they contain no implementation. Development repositories are separate; the target is one coordinated BTCS installation with an integrated GUI, not separate end-user downloads. No unified installer is available yet.</p>
+            <p>Explore the public Bitcoin Silver source plus the SilverPay, SilverForge, BTCS L2, and shared-platform repositories linked below. Silver Scan, Silver Pool and SilvEx now contain published development code; production exchange, multi-coin mining and payout readiness remain unverified. Development repositories are separate; the target is one coordinated BTCS installation with an integrated GUI, not separate end-user downloads. No unified installer is available yet.</p>
             <a class="button button-light" href="https://github.com/Silver-Labs-Technology-Development/Silver-Labs-Bitcoin-Silver-Development" target="_blank" rel="noopener noreferrer">Open Bitcoin Silver / BTCS Core fork <span aria-hidden="true">↗</span></a>
           </div>
           <div class="dev-links">
@@ -270,7 +253,7 @@
             <a class="dev-link" href="https://github.com/Silver-Labs-Technology-Development/Silver-Labs-Bitcoin-Silver-Development/tree/silver-labs-l2" target="_blank" rel="noopener noreferrer"><span><b>08</b> BTCS Core L2 integration branch</span><span aria-hidden="true">↗</span></a>
             <a class="dev-link" href="https://github.com/Silver-Labs-Technology-Development/silver-labs-platform" target="_blank" rel="noopener noreferrer"><span><b>09</b> Shared platform source</span><span aria-hidden="true">↗</span></a>
             <a class="dev-link" href="https://github.com/Silver-Labs-Technology-Development/silver-labs-platform/blob/main/docs/APP-CAPABILITY-MATRIX.md" target="_blank" rel="noopener noreferrer"><span><b>10</b> Application capability matrix</span><span aria-hidden="true">↗</span></a>
-            <div class="dev-note"><strong>Prototype and contribution status</strong><p>Use each linked repository's README for scope, setup, and current limitations. The unified installer and integrated GUI are targets, not available releases. Planned repositories for SilvEx, Silver Scan, the pool, and POW-S contain scope documents only; no implementation is currently published.</p></div>
+            <div class="dev-note"><strong>Prototype and contribution status</strong><p>Use each linked repository's README for scope, setup, and current limitations. The unified installer and integrated GUI are targets, not available releases. Silver Scan, Silver Pool and SilvEx contain development code. Read each repository’s latest status before relying on features or public service availability.</p></div>
           </div>
         </div>
 
@@ -353,6 +336,7 @@ cmake --build build -j"$(nproc)"</code></pre>
         <p>Independent engineering. Honest progress.</p>
         <a class="footer-link" href="https://github.com/Silver-Labs-Technology-Development" target="_blank" rel="noopener noreferrer">GitHub organization <span aria-hidden="true">↗</span></a>
       </div>
+      <nav class="container footer-extra" aria-label="Additional information"><a href="about.html">About</a><a href="contact.html">Contact</a><a href="faq.html">FAQ</a><a href="listing.html">Listing information</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav>
       <div class="container footer-bottom">
         <span>© <span id="current-year"></span> Silver Labs Technology &amp; Development</span>
         <span>Developer preview · Not production-ready financial infrastructure</span>
