@@ -1,5 +1,7 @@
 import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
+import { access } from 'node:fs/promises'
+import { fileURLToPath } from 'node:url'
 import { test } from 'node:test'
 import { projects } from '../projects.mjs'
 
@@ -116,7 +118,7 @@ test('Pages workflow tests PRs, deploys development branch, packages each page',
   assert.match(workflow, /node --test tests\/\*\.test\.mjs/)
   assert.match(workflow, /path: _site/)
   assert.match(workflow, /if:\s*github\.event_name != 'pull_request'/)
-  for (const page of [...pages.map(x => x+'.html'),'info.css','project.css','growth.html','index.html','styles.css','projects.mjs','site.mjs']) {
+  for (const page of [...pages.map(x => x+'.html'),'info.css','project.css','shell.css','shell.mjs','architecture.html','roadmap.html','developers.html','growth.html','index.html','styles.css','projects.mjs','site.mjs']) {
     assert.ok(workflow.includes(page), 'not packaged: ' + page)
   }
 })
@@ -149,4 +151,75 @@ test('Pages artifact includes the full project directory and growth pages', () =
   assert.match(workflow, /cp -R projects _site\//)
   assert.match(workflow, /project\.css/)
   assert.match(workflow, /growth\.html/)
+})
+
+
+const allSitePaths = [
+  'index.html', ...pages.map(p=>p+'.html'),
+  'architecture.html','roadmap.html','developers.html','growth.html',
+  'projects/index.html',...projectSlugs.map(slug=>'projects/'+slug+'.html')
+]
+
+test('every page shares one Silver Pool-inspired static navigation and footer', async()=>{
+  const css = await read('shell.css')
+  const js = await read('shell.mjs')
+  assert.match(css,/--charcoal:#101315/)
+  assert.match(css,/--gold-light:#e4c778/)
+  assert.match(css,/\.primary-navigation/)
+  assert.match(css,/@media\(max-width:900px\)/)
+  assert.match(js,/aria-expanded/)
+  for(const path of allSitePaths){
+    const html=await read(path)
+    const prefix=path.startsWith('projects/')?'../':''
+    assert.match(html,new RegExp('href="'+prefix+'shell\\.css"'),path)
+    assert.match(html,new RegExp('src="'+prefix+'shell\\.mjs"'),path)
+    assert.equal((html.match(/class="site-header"/g)||[]).length,1,path+' must have one header')
+    assert.equal((html.match(/class="shell-footer"/g)||[]).length,1,path+' must have one footer')
+    const nav=html.match(/<nav\b[^>]*data-site-nav[^>]*>([\s\S]*?)<\/nav>/)
+    assert.ok(nav,'Missing site-wide navigation: '+path)
+    const targets=[...nav[1].matchAll(/\bhref="([^"]+)"/g)].map(x=>x[1])
+    assert.deepEqual(targets,[
+      'index.html','projects/index.html','architecture.html','roadmap.html',
+      'developers.html','growth.html','about.html','contact.html'
+    ].map(p=>prefix+p),'Wrong nav structure: '+path)
+    assert.ok(targets.every(h=>!h.includes('#')),path+' still has scrolling tabs')
+  }
+})
+
+test('all internal links point to real HTML pages or explicit skip targets', async()=>{
+  for(const path of allSitePaths){
+    const html=await read(path)
+    const absolute=new URL('../'+path,import.meta.url)
+    const ids=new Set([...html.matchAll(/\bid="([^"]+)"/g)].map(x=>x[1]))
+    for(const [,href] of html.matchAll(/\bhref="([^"]+)"/g)){
+      if(href.startsWith('#')){
+        assert.ok(ids.has(href.slice(1)),'Broken local anchor '+href+' on '+path)
+        continue
+      }
+      if(/^(https?:|mailto:|data:)/.test(href))continue
+      const resolved=new URL(href,absolute)
+      assert.ok(resolved.pathname.endsWith('.html'),'Non-page local link '+href+' on '+path)
+      try{await access(fileURLToPath(resolved))}
+      catch{assert.fail('Broken link '+href+' on '+path)}
+    }
+  }
+})
+
+test('homepage CTAs and diagrams lead to full pages, not scrolling sections',()=>{
+  assert.match(html,/href="projects\/index\.html"/)
+  assert.match(html,/class="arch-node[^"]*arch-link" href="projects\/silver-scan\.html"/)
+  assert.match(html,/href="architecture\.html"/)
+  assert.match(html,/href="roadmap\.html"/)
+  assert.match(html,/href="developers\.html"/)
+  assert.doesNotMatch(html,/href="#(?:ecosystem|architecture|research|roadmap|developers|about|home)"/)
+})
+
+test('dedicated technology, roadmap and developer tabs contain substantive content',async()=>{
+  for(const slug of ['architecture','roadmap','developers']){
+    const page=await read(slug+'.html')
+    assert.ok(page.length>3000,slug+' topic page has insufficient depth')
+    assert.match(page,/class="topic-hero"/)
+    assert.match(page,/class="topic-card"/)
+    assert.match(page,/href="projects\/index\.html"/)
+  }
 })
