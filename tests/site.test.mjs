@@ -191,7 +191,7 @@ test('all internal links point to real HTML pages or explicit skip targets', asy
     const html=await read(path)
     const absolute=new URL('../'+path,import.meta.url)
     const ids=new Set([...html.matchAll(/\bid="([^"]+)"/g)].map(x=>x[1]))
-    for(const [,href] of html.matchAll(/\bhref="([^"]+)"/g)){
+    for(const [,href] of html.matchAll(/<a\b[^>]*\bhref="([^"]+)"/g)){
       if(href.startsWith('#')){
         assert.ok(ids.has(href.slice(1)),'Broken local anchor '+href+' on '+path)
         continue
