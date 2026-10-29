@@ -8,6 +8,8 @@ production wallet, trading, market API, payout service or server-side secrets.
 ## Site map
 
 - [Full project directory](projects/index.html) — eleven independently maintained project and service guides with build evidence, usage, participation and launch gates.
+- [Architecture](architecture.html), [Roadmap](roadmap.html), and [Developers](developers.html) — dedicated, in-depth topic pages.
+- [Shared design system](docs/DESIGN-SYSTEM.md) — exact Silver Pool palette, site-wide nav, link and accessibility rules for Silver Labs applications.
 - [Project Growth](growth.html) — proposed listings, advertising billboards, analytics, campaign support and separated technical integration reviews.
 - [Home and ecosystem](index.html) — product directory, current implementation
   status, architecture, Silver Scan research direction, developer resources.
@@ -33,6 +35,7 @@ Requires Node.js 18+; no installed dependencies:
 ```sh
 node --test tests/*.test.mjs
 node --check site.mjs
+node --check shell.mjs
 node --check projects.mjs
 node scripts/serve.mjs
 ```
@@ -46,7 +49,7 @@ verified independently.
 
 The repository default branch is `main`. The GitHub Pages deployment workflow
 builds and publishes pushes to `website-development` and tests pull requests
-to `main`. The workflow packages the homepage, project data, all eleven project pages, the project directory, Project Growth, and six additional information pages, with `info.css` and `project.css`.
+to `main`. The workflow packages the homepage, all eleven project guides, the project directory, Architecture, Roadmap, Developers, Growth, informational pages, and `shell.css`/`shell.mjs` shared navigation assets.
 
 Public Pages development site:
 https://silver-labs-technology-development.github.io/Official-Website/
@@ -75,3 +78,7 @@ security policy. Avoid production claims based on this static website alone.
 ## Release-date policy
 
 Project guides distinguish published code from verified public operation. No calendar ETA is invented: each page instead records the next objective readiness gates and identifies whether a public date has actually been announced. Current development branches may contain features not yet merged to a project's default branch.
+
+## Multipage site behavior
+
+The eight top-level navigation destinations are real HTML routes, not homepage jump links. A single shared `shell.css`/`shell.mjs` keeps the sticky navigation, accessibility and Silver Pool-inspired design consistent across every page. Project titles, product cards and architecture nodes link to relevant detailed information pages. See [the shared contract](docs/DESIGN-SYSTEM.md).
