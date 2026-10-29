@@ -9,32 +9,11 @@
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23111315'/%3E%3Cpath d='M44 17H25a11 11 0 0 0 0 22h14a4 4 0 0 1 0 8H18' fill='none' stroke='%23d8dadd' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
     <link rel="stylesheet" href="styles.css">
     <script type="module" src="site.mjs"></script>
-  </head>
+  <link rel="stylesheet" href="shell.css"><script type="module" src="shell.mjs"></script></head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
 
-    <header class="site-header">
-      <div class="header-inner">
-        <a class="brand" href="#home" aria-label="Silver Labs home">
-          <span class="brand-mark" aria-hidden="true">S</span>
-          <span class="brand-name">SILVER <span>LABS</span></span>
-        </a>
-        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
-          <span class="sr-only">Toggle navigation</span>
-          <span aria-hidden="true"></span><span aria-hidden="true"></span>
-        </button>
-        <nav id="primary-navigation" class="primary-navigation" aria-label="Primary navigation">
-          <a href="#ecosystem">Ecosystem</a>
-          <a href="projects/index.html">All projects</a>
-          <a href="growth.html">Project Growth</a>
-          <a href="#research">Silver Scan</a>
-          <a href="#architecture">Architecture</a>
-          <a href="#roadmap">Roadmap</a>
-          <a href="#developers">Developers</a>
-          <a class="nav-about" href="contact.html">Get involved</a>
-        </nav>
-      </div>
-    </header>
+    <header class="site-header"><div class="header-inner"><a class="brand" href="index.html" aria-label="Silver Labs home"><span class="brand-mark" aria-hidden="true">S</span><span class="brand-name">SILVER <span>LABS</span></span></a><button class="menu-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" data-site-menu aria-label="Toggle site navigation"><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span></button><nav id="primary-navigation" class="primary-navigation" aria-label="Primary navigation" data-site-nav><a href="index.html" aria-current="page">Overview</a><a href="projects/index.html">Projects</a><a href="architecture.html">Architecture</a><a href="roadmap.html">Roadmap</a><a href="developers.html">Developers</a><a href="growth.html">Project Growth</a><a href="about.html">About</a><a href="contact.html" class="nav-about">Contact</a></nav></div></header>
 
     <main id="main">
       <section id="home" class="hero">
@@ -313,20 +292,6 @@ cmake --build build -j"$(nproc)"</code></pre>
       </section>
     </main>
 
-    <footer class="site-footer">
-      <div class="container footer-top">
-        <a class="brand footer-brand" href="#home">
-          <span class="brand-mark" aria-hidden="true">S</span>
-          <span class="brand-name">SILVER <span>LABS</span></span>
-        </a>
-        <p>Independent engineering. Honest progress.</p>
-        <a class="footer-link" href="https://github.com/Silver-Labs-Technology-Development" target="_blank" rel="noopener noreferrer">GitHub organization <span aria-hidden="true">↗</span></a>
-      </div>
-      <nav class="container footer-extra" aria-label="Additional information"><a href="about.html">About</a><a href="contact.html">Contact</a><a href="faq.html">FAQ</a><a href="listing.html">Listing information</a><a href="growth.html">Project Growth</a><a href="projects/index.html">All projects</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav>
-      <div class="container footer-bottom">
-        <span>© <span id="current-year"></span> Silver Labs Technology &amp; Development</span>
-        <span>Developer preview · Not production-ready financial infrastructure</span>
-      </div>
-    </footer>
+    <footer class="shell-footer"><div class="footer-identity"><strong>SILVER LABS</strong><span>Technology &amp; Development · Source-backed engineering.</span><span class="footer-note">Development prototypes are not production financial services.</span></div><nav class="footer-links" aria-label="Footer navigation"><a href="projects/index.html">Projects</a><a href="faq.html">FAQ</a><a href="listing.html">Listing</a><a href="growth.html">Growth</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="contact.html">Contact</a></nav></footer>
   </body>
 </html>
