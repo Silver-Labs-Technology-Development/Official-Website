@@ -147,3 +147,12 @@ body.project-page .project-main{color:var(--ink)}
 .project-page .growth-packages th,.project-page .growth-packages td{border-color:var(--line)}
 .project-page .project-main .growth-hero .project-action.action-outline{color:#fff}
 .project-page .project-main .growth-billboard .preview-tag{display:inline-block;color:#f0dcad;font-weight:720;font-size:12px;margin-top:10px}
+
+/* Final contrast/spacing parity with the Silver Pool content system. */
+main strong{color:var(--ink)}
+.project-page .project-main .project-stage strong{color:#f6df9c}
+.project-page .project-main .growth-billboard aside strong{color:#fff}
+.project-page .project-main .growth-example strong{color:var(--ink)}
+.project-page .project-main .project-end strong{color:#fff}
+.section-pad{padding-block:72px}
+.hero h1{font-size:clamp(46px,6vw,76px)}
