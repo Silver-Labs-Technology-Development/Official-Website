@@ -16,7 +16,7 @@ export const projects = [
     category: 'Explorer · Markets · Coin Watch · DEX Scan',
     status: 'Development',
     statusClass: 'development',
-    summary: 'Silver Scan has a Python BTCS L1 explorer prototype with RPC block/transaction search, address views, an SQLite indexer and a static interface. Its roadmap expands into multi-asset market research, watchlists, token/pair discovery, DEX Scan and eventually verified L2 and pool data. Public live market and multi-chain indexing coverage must be verified separately.',
+    summary: 'Silver Scan has a Python BTCS L1 explorer prototype with RPC block/transaction search, address views, an SQLite indexer and a static interface. Its roadmap expands into multi-asset market research, Coin Watch, token/pair discovery, DEX Scan and eventually verified L2 and pool data. Public live market and multi-chain indexing coverage must be verified separately.',
     next: 'Add provider-labeled market listings and DEX pair research with source timestamps, stable asset IDs, caching and clear unavailable states, then harden chain indexing and reorg recovery.',
     repo: 'https://github.com/Silver-Labs-Technology-Development/Silver-Scan',
     repoLabel: 'Silver Scan explorer and research terminal',
