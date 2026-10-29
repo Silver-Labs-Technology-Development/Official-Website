@@ -3,7 +3,12 @@ Updated: October 29, 2026
 
 The user-selected delivery sequence is **Official Website → SilverScan → Silver Pool**.
 The homepage and multipage Official Website have an acceptable initial structure.
-Finish contrast, consistency and deployment proof across products before broad launch.
+Finish browser screenshot review, contrast, consistency and deployment proof across products before broad launch.
+
+As of this checklist revision, SilverScan's new page structure is implemented
+on a **draft PR branch** and its automated tests check representative color
+pairs. The checklist does not certify that visual screenshot testing or live
+provider integrations have been completed.
 
 ## 1. Official Website — initial delivery / restrained maintenance
 
@@ -22,27 +27,27 @@ Finish contrast, consistency and deployment proof across products before broad l
 ## 2. SilverScan — current priority
 
 ### Product structure and usability
-- [ ] **Always spell brand “SilverScan”** in product headers, menus and documentation.
-- [ ] Consistent navy/light-blue/silver tokens and accessible contrast in light
+- [x] **Always spell brand “SilverScan”** in product headers, menus and documentation.
+- [x] Consistent navy/light-blue/silver tokens and automated contrast checks in light
       and dark; don't hide data in transparent panels. Test desktop/mobile.
-- [ ] Clear, predictable top navigation: **Markets, Coin Watch, Heatmap,
+- [x] Clear, predictable top navigation: **Markets, Coin Watch, Heatmap,
       Crypto News, Mining, Explorer, DEX, All Features**.
-- [ ] Each item has a distinct destination or useful view, not a duplicate
+- [x] Each item has a distinct destination or useful view, not a duplicate
       “universe” page.
-- [ ] Main Markets: server-side provider pagination across market-cap ranks,
+- [x] Main Markets: server-side provider pagination across market-cap ranks,
       **25/50/100/200 results per page**, previous/next, source/timestamps,
       active-market filtering and explicit unknown totals.
-- [ ] Coin Watch incorporates catalog-wide search and low-ranked provider-ID
+- [x] Coin Watch incorporates catalog-wide search and low-ranked provider-ID
       discovery, Coinbase/CMC source comparison, a browser-local watchlist
       and low-ranked BTCS `bitcoin-silver-2`. Do not imply coin-ID == active trading.
-- [ ] Crypto News is its own accessible page with publisher-attributed original
+- [x] Crypto News is its own accessible page with publisher-attributed original
       links, date and source, no reproduced articles.
-- [ ] Mining is a distinct page showing Silver Pool **verified, active**
+- [x] Mining has its own page with Silver Pool **status-separated**
       networks only, with source-backed chain specs, network and pool hash,
       difficulty, block time/reward when verified, and user-input ROI estimate.
-- [ ] MiningPoolStats (and other services) may be linked for context;
+- [x] MiningPoolStats (and other services) are linked for context;
       **bulk ingestion requires an authorized documented provider API**.
-- [ ] For unverified networks, present “not connected / not supported” instead
+- [x] For unverified networks, present “not connected / not supported” instead
       of placeholder coins, fictitious node status, rewards or daily ROI.
 - [ ] Extend multi-chain explorer adapters, token contracts, holder/transfer
       analytics, NFTs, exchange research, DEX depth and developer APIs one
@@ -51,8 +56,8 @@ Finish contrast, consistency and deployment proof across products before broad l
       privacy and commercial licensing before production.
 
 ### Verification / release
-- [ ] Backend API unit/transport tests for pagination, identity, risk labels.
-- [ ] Browser static tests for navigation, contrast tokens and page completeness.
+- [x] Backend API unit/transport tests for pagination, identity, risk labels.
+- [x] Browser static tests for navigation, contrast tokens and page completeness.
 - [ ] Human visual audit and responsive screenshot approval.
 - [ ] Independently verify external API access, chain nodes, legal permission to
       display/sell third-party data, production proxy, backups and monitoring.
