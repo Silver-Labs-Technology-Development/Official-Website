@@ -9,6 +9,7 @@ const css = await read('styles.css')
 const infoCss = await read('info.css')
 const workflow = await read('.github/workflows/pages.yml')
 const pages = ['about', 'contact', 'faq', 'listing', 'privacy', 'terms']
+const projectSlugs = ['silver-pool', 'silver-scan', 'silverpay', 'silverforge', 'silvex', 'silvex-dex', 'silvex-dex-node', 'btcs-l2', 'pow-s', 'silver-labs-platform', 'soarin-media']
 const infoPages = await Promise.all(pages.map(async slug => ({slug,html:await read(slug + '.html')})))
 
 test('all primary anchors resolve, including Silver Scan research', () => {
@@ -47,7 +48,9 @@ test('pool, explorer and exchange statuses do not claim unverified production la
   assert.match(scan.summary, /BTCS L1/)
   assert.match(scan.summary, /Coin Watch/)
   assert.match(exchange.summary, /not verified/i)
-  assert.match(html, /PAYOUTS DISABLED/)
+  assert.match(html, /href="projects\/silver-scan\.html"/)
+  assert.match(html, /href="growth\.html"/)
+  assert.match(html, /payouts disabled/i)
   assert.match(html, /NO LIVE TRADING/)
   assert.doesNotMatch(html, /no explorer and pool service|no separate pool service exists/i)
 })
@@ -113,7 +116,37 @@ test('Pages workflow tests PRs, deploys development branch, packages each page',
   assert.match(workflow, /node --test tests\/\*\.test\.mjs/)
   assert.match(workflow, /path: _site/)
   assert.match(workflow, /if:\s*github\.event_name != 'pull_request'/)
-  for (const page of [...pages.map(x => x+'.html'),'info.css','index.html','styles.css','projects.mjs','site.mjs']) {
+  for (const page of [...pages.map(x => x+'.html'),'info.css','project.css','growth.html','index.html','styles.css','projects.mjs','site.mjs']) {
     assert.ok(workflow.includes(page), 'not packaged: ' + page)
   }
+})
+
+test('all eleven products have substantial dedicated pages with honest launch gates', async () => {
+  const directory = await read('projects/index.html')
+  const growth = await read('growth.html')
+  for (const slug of projectSlugs) {
+    const page = await read('projects/' + slug + '.html')
+    assert.match(directory, new RegExp('href="' + slug + '\\.html"'))
+    assert.match(page, /What has already been built/)
+    assert.match(page, /How to use or preview/)
+    assert.match(page, /How to get involved/)
+    assert.match(page, /When will it be live/)
+    assert.match(page, /release-readiness|launch dates|launch date|launch milestones|Launch dates/i)
+    assert.match(page, /href="\.\.\/index\.html"/)
+    assert.ok(page.length > 4000, 'Project page has insufficient depth: ' + slug)
+  }
+  for (const project of projects) {
+    assert.ok(project.slug, 'Missing project page slug: ' + project.name)
+    assert.ok(projectSlugs.includes(project.slug), 'Missing file for project: ' + project.slug)
+  }
+  assert.match(growth, /YOUR PROJECT/)
+  assert.match(growth, /Silver Scan/)
+  assert.match(growth, /SPONSORED PROJECT BILLBOARD/)
+  assert.match(growth, /Applications, paid billboard inventory and listing payments are not currently open/)
+})
+
+test('Pages artifact includes the full project directory and growth pages', () => {
+  assert.match(workflow, /cp -R projects _site\//)
+  assert.match(workflow, /project\.css/)
+  assert.match(workflow, /growth\.html/)
 })
