@@ -78,7 +78,7 @@ test('site policies and FAQ distinguish products and providers', () => {
   const faq = infoPages.find(p => p.slug === 'faq').html
   const terms = infoPages.find(p => p.slug === 'terms').html
   const privacy = infoPages.find(p => p.slug === 'privacy').html
-  assert.match(faq, /not.*Bitcoin Silver organization/i)
+  assert.match(faq, /Silver Labs operates its own products and developer repositories/i)
   assert.match(faq, /Silver Scan/)
   assert.match(terms, /Third-party market/)
   assert.match(privacy, /Hosting providers/)
