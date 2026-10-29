@@ -17,6 +17,7 @@ if (projectGrid) {
         <h3>${project.name}</h3>
         <p class="project-summary">${project.summary}</p>
         <p class="project-next"><strong>Next:</strong> ${project.next}</p>
+        <a class="project-detail-link" href="projects/${project.slug}.html">Explore ${project.name} <span aria-hidden="true">→</span></a>
         ${repository}
       </article>
     `
