@@ -30,12 +30,13 @@ jobs:
         run: |
           node --test tests/*.test.mjs
           node --check site.mjs
+          node --check shell.mjs
           node --check projects.mjs
           node --check scripts/serve.mjs
       - name: Prepare static Pages artifact
         run: |
           mkdir -p _site
-          cp index.html styles.css projects.mjs site.mjs info.css project.css growth.html about.html contact.html faq.html listing.html privacy.html terms.html _site/
+          cp index.html styles.css projects.mjs site.mjs shell.css shell.mjs info.css project.css growth.html about.html contact.html faq.html listing.html privacy.html terms.html architecture.html roadmap.html developers.html _site/
           cp -R projects _site/
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
