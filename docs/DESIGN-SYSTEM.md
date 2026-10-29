@@ -1,27 +1,32 @@
-# Silver Labs design system v1 — aligned with Silver Pool
+# Silver Labs design system v2 — midnight blue, ice blue and silver
 
 This is the current shared presentation contract for Silver Labs web properties.
 The initial implementation lives in `shell.css` and `shell.mjs` in the
-Official Website. Its design vocabulary is based on published Silver Pool
-`site/styles.css`, not on the older standalone dark information-page nav.
+Official Website. The updated design uses the user's blue/silver direction across Silver Scan,
+Silver Pool and the Official Website. The earlier white/gold implementation is
+superseded. Each product has its own isolated review branch.
 
 ## Canonical visual tokens
 
 | Token | Value | Intent |
 | --- | --- | --- |
-| `--charcoal` | `#101315` | Sticky header, dark hero and footer |
-| `--charcoal-2` | `#191e22` | Elevated dark surfaces |
-| `--white` | `#ffffff` | Main content and interactive cards |
-| `--paper` | `#f4f6f7` | Neutral alternating sections |
-| `--silver` | `#d7dce0` | Brand support and borders |
-| `--silver-2` | `#eef1f3` | Secondary neutral backgrounds |
-| `--gold` | `#b99642` | Accents and metadata |
-| `--gold-light` | `#e4c778` | Important actions and active nav |
-| `--accent` | `#1a6fba` | Information links and minor controls |
-| `--ink` | `#15181b` | Main readable text |
-| `--muted` | `#66707a` | Secondary readable text |
-| `--line` | `#dfe3e7` | Dividers and card edges |
-| `--radius` | `14px` | Regular cards |
+| `--charcoal` | `#0b1524` | Sticky dark header, hero and footer |
+| `--charcoal-2` | `#122439` | Dark secondary surfaces |
+| `--white` | `#101b2d` | Primary deep-navy cards; token is legacy-named |
+| `--paper` | `#122237` | Section surfaces |
+| `--silver` | `#d7e7f6` | Silver/light text |
+| `--silver-2` | `#213b54` | Secondary surface |
+| `--gold` | `#70bff8` | Legacy variable; repurposed to blue |
+| `--gold-light` | `#90d4ff` | Primary icy-blue action |
+| `--accent` | `#81c9ff` | Interaction and link blue |
+| `--ink` | `#dfe9f7` | Main light text |
+| `--muted` | `#99acc2` | Muted readable text |
+| `--line` | `#30465c` | Dividers |
+| `--radius` | `14px` | Cards |
+
+Use navy, light blue and silver. Do not reintroduce gold-heavy or bright
+white card layouts in product views. Transitional CSS variable names are kept
+for compatibility with existing components while their visual values are blue.
 
 Type: Inter or Segoe UI system fallback, not a bundled proprietary font.
 Spacing: 1160px comfortable content measure with responsive mobile gutter.
@@ -42,7 +47,7 @@ Every public page uses **one** shared dark header with stable links to:
 8. Contact — `contact.html`
 
 Each item opens a **different real information page**, never a long homepage
-anchor. The selected destination has `aria-current="page"` and a gold
+anchor. The selected destination has `aria-current="page"` and an icy-blue
 indicator. Mobile uses one keyboard-operable disclosure menu. Project detail
 pages inherit the same header and mark Projects as active. All pages also have
 the same footer and page-level breadcrumb links.
@@ -55,10 +60,10 @@ deliberate in-page reading aid **not** used as a primary site tab.
 
 ## Cross-product usage
 
-Silver Pool is the design reference; the Official Website now implements the
-design vocabulary and site-wide layout. The same tokens should guide future
-Silver Scan, SilverPay, SilverForge, SilvEx and ecosystem web UI passes, but
-each repository needs **its own tested implementation and deployment**.
+The Official Website, Silver Scan and Silver Pool now have dedicated
+blue/silver styling work on independent review branches. Other projects can
+adopt the same tokens and typography, but **each repository requires its own
+tested implementation and deployment**.
 
 Product-specific navigation remains valid: a mining pool may have Statistics,
 Miners and Blocks, while a researcher may have Markets, Coin Profiles,
