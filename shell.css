@@ -156,3 +156,65 @@ main strong{color:var(--ink)}
 .project-page .project-main .project-end strong{color:#fff}
 .section-pad{padding-block:72px}
 .hero h1{font-size:clamp(46px,6vw,76px)}
+
+/* SILVER LABS — BLUE/SILVER DESIGN DIRECTIVE (October 2026)
+   User-approved direction: a unified midnight/navy, icy blue and silver
+   identity, NOT the gold-accented Silver Pool prototype palette. */
+:root{
+  --ink:#dfe9f7;--ink-soft:#bfd0e3;--muted:#99acc2;
+  --line:#30465c;--paper:#122237;--white:#101b2d;
+  --charcoal:#0b1524;--charcoal-2:#122439;
+  --silver:#d7e7f6;--silver-2:#213b54;
+  --accent:#81c9ff;--accent-dark:#a9dcff;--gold:#70bff8;
+  --gold-light:#90d4ff;--blue:#a9dcff;
+  color-scheme:dark;
+}
+body,body.project-page{background:#0c182a;color:#e7f1fc}
+.site-header{background:rgba(9,19,34,.97);border-color:#315071}
+.site-header .brand-mark{background:linear-gradient(145deg,#e4f5ff,#80c7f4);color:#0a2037}
+.site-header .brand-name span{color:#9edcff}
+.site-header .primary-navigation a[aria-current="page"]{box-shadow:inset 0 -2px 0 #80c7ff}
+.site-header .primary-navigation .nav-about{background:#93d5ff;color:#08223d}
+.site-header .primary-navigation .nav-about:hover{background:#c0e8ff;color:#08223d}
+.shell-footer{background:#091523;border-top-color:#315071}
+.shell-footer .footer-identity strong{color:#f2f9ff}
+.shell-footer a:hover{color:#a8ddff}
+.info-button,.button-light,.project-action.action-primary{background:#91d5ff!important;color:#0b2138!important;border-color:#91d5ff!important}
+.info-button:hover,.button-light:hover,.project-action.action-primary:hover{background:#c5eaff!important;color:#09233d!important}
+.hero,.topic-hero,.project-page .project-hero,.growth-section,.growth-hero{
+  background:radial-gradient(circle at 80% 15%,rgba(64,155,235,.24),transparent 40%),linear-gradient(135deg,#0b192b,#1c3a57)!important;
+  border-color:#315574!important;
+}
+.hero h1 span,.topic-hero h1 span{color:#93d5ff}
+.eyebrow,.topic-hero .eyebrow,.project-page .project-main .project-hero .kicker{color:#90d4ff}
+.hero-copy,.project-page .project-intro,.topic-hero p{color:#ccdeee}
+.topic-card,.feature-project,.project-card,.project-page .directory-card{
+  background:#12253a!important;border-color:#35516c!important;color:#e8f3ff!important;
+}
+.topic-card h2,.feature-project h3,.project-page .directory-card h2{color:#f0f7ff!important}
+.topic-card p,.feature-project p,.project-page .directory-card p{color:#b7cbe0!important}
+.topic-card:hover,.feature-project:hover,.project-card:hover,.project-page .directory-card:hover{border-color:#83c8ff!important;background:#183451!important}
+.topic-number,.topic-links a,.topic-callout a,.project-detail-link,.project-page .directory-card strong{color:#99d8ff}
+.topic-links a,.topic-callout a{background:#1b3853;border-color:#345877}
+.topic-callout,.project-page .project-main li,.project-page .growth-steps>article,.project-page .growth-example>div{
+  background:#142b42!important;border-color:#34516b!important;color:#e0eeff!important;
+}
+.topic-callout p,.project-page .project-main li,.project-page .growth-steps p,.project-page .growth-example span{color:#bad0e6!important}
+.project-page .project-main .section-label h2,.project-page .project-main .directory-hero h1{color:#f2f8ff!important}
+.project-page .project-main .section-label>span,.project-page .directory-hero .kicker{color:#91d2fb}
+.project-page .project-main .breadcrumb,.project-page .directory-hero p{color:#a7c2d9}
+.project-page .project-main .breadcrumb a{color:#9bd9ff}
+.project-page .project-main .project-stage{background:#0c1c30d9;border-color:#427092}
+.project-page .project-main .project-stage strong{color:#a5defe}
+.project-page .project-main .project-end{background:linear-gradient(130deg,#102b45,#1b4767);border-color:#4a7896}
+.project-page .project-main .caution{background:#233d51;color:#cfe6fb;border-left-color:#82cbff}
+.project-page .project-main .eta{color:#9ad7ff}
+.project-page .growth-packages th{background:#1b3852;color:#eaf5fe}
+.project-page .growth-packages td{color:#d1e5f9;border-color:#47657c}
+.project-page .growth-steps>article b,.project-page .directory-card .directory-num{color:#8fcefd}
+.project-page .project-main .growth-steps h3,.project-page .project-main .growth-example b{color:#e7f2ff}
+.project-title-link,.project-card .project-title-link{color:#eff8ff}
+.project-card .project-title-link:hover{color:#9fd9ff}
+.arch-node.arch-link:hover{border-color:#86cbff}
+.feature-project strong,.project-page .directory-card .directory-stage{color:#91d3fd}
+:focus-visible{outline-color:#9ddcff!important}
