@@ -14,7 +14,7 @@ if (projectGrid) {
           <span class="status-pill status-${project.statusClass}">${project.status}</span>
         </div>
         <p class="project-category">${project.category}</p>
-        <h3>${project.name}</h3>
+        <h3><a class="project-title-link" href="projects/${project.slug}.html">${project.name}</a></h3>
         <p class="project-summary">${project.summary}</p>
         <p class="project-next"><strong>Next:</strong> ${project.next}</p>
         <a class="project-detail-link" href="projects/${project.slug}.html">Explore ${project.name} <span aria-hidden="true">→</span></a>
@@ -22,24 +22,6 @@ if (projectGrid) {
       </article>
     `
   }).join('')
-}
-
-const menuToggle = document.querySelector('.menu-toggle')
-const navigation = document.querySelector('#primary-navigation')
-
-if (menuToggle && navigation) {
-  menuToggle.addEventListener('click', () => {
-    const expanded = menuToggle.getAttribute('aria-expanded') === 'true'
-    menuToggle.setAttribute('aria-expanded', String(!expanded))
-    navigation.classList.toggle('is-open', !expanded)
-  })
-
-  navigation.addEventListener('click', (event) => {
-    if (event.target instanceof HTMLAnchorElement) {
-      menuToggle.setAttribute('aria-expanded', 'false')
-      navigation.classList.remove('is-open')
-    }
-  })
 }
 
 const year = document.querySelector('#current-year')
