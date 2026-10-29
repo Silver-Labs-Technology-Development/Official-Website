@@ -7,6 +7,8 @@ production wallet, trading, market API, payout service or server-side secrets.
 
 ## Site map
 
+- [Full project directory](projects/index.html) — eleven independently maintained project and service guides with build evidence, usage, participation and launch gates.
+- [Project Growth](growth.html) — proposed listings, advertising billboards, analytics, campaign support and separated technical integration reviews.
 - [Home and ecosystem](index.html) — product directory, current implementation
   status, architecture, Silver Scan research direction, developer resources.
 - [About](about.html) — Silver Labs identity and developer principles.
@@ -44,8 +46,7 @@ verified independently.
 
 The repository default branch is `main`. The GitHub Pages deployment workflow
 builds and publishes pushes to `website-development` and tests pull requests
-to `main`. The workflow packages the homepage, project data and six
-information pages, including `info.css`.
+to `main`. The workflow packages the homepage, project data, all eleven project pages, the project directory, Project Growth, and six additional information pages, with `info.css` and `project.css`.
 
 Public Pages development site:
 https://silver-labs-technology-development.github.io/Official-Website/
@@ -70,3 +71,7 @@ GitHub Pages workflow have been updated and verified.
 
 See each linked product repository for its latest test evidence, license and
 security policy. Avoid production claims based on this static website alone.
+
+## Release-date policy
+
+Project guides distinguish published code from verified public operation. No calendar ETA is invented: each page instead records the next objective readiness gates and identifies whether a public date has actually been announced. Current development branches may contain features not yet merged to a project's default branch.
