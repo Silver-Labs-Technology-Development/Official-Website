@@ -1,166 +1,225 @@
 import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
+import { access } from 'node:fs/promises'
+import { fileURLToPath } from 'node:url'
 import { test } from 'node:test'
-
 import { projects } from '../projects.mjs'
 
-const html = await readFile(new URL('../index.html', import.meta.url), 'utf8')
-const css = await readFile(new URL('../styles.css', import.meta.url), 'utf8')
-const pagesWorkflow = await readFile(new URL('../.github/workflows/pages.yml', import.meta.url), 'utf8')
-const expectedSections = ['home', 'ecosystem', 'architecture', 'roadmap', 'developers', 'about']
+const read = path => readFile(new URL('../' + path, import.meta.url), 'utf8')
+const html = await read('index.html')
+const css = await read('styles.css')
+const infoCss = await read('info.css')
+const workflow = await read('.github/workflows/pages.yml')
+const pages = ['about', 'contact', 'faq', 'listing', 'privacy', 'terms']
+const projectSlugs = ['silver-pool', 'silver-scan', 'silverpay', 'silverforge', 'silvex', 'silvex-dex', 'silvex-dex-node', 'btcs-l2', 'pow-s', 'silver-labs-platform', 'soarin-media']
+const infoPages = await Promise.all(pages.map(async slug => ({slug,html:await read(slug + '.html')})))
 
-test('all primary navigation sections exist and navigation links resolve', () => {
-  const ids = new Set([...html.matchAll(/\bid="([^"]+)"/g)].map((match) => match[1]))
-  for (const section of expectedSections) assert.ok(ids.has(section), `missing #${section}`)
-  for (const [, href] of html.matchAll(/\bhref="#([^"]+)"/g)) {
-    assert.ok(ids.has(href), `unresolved in-page link #${href}`)
+test('all primary anchors resolve, including Silver Scan research', () => {
+  const ids = new Set([...html.matchAll(/\bid="([^"]+)"/g)].map(m => m[1]))
+  for (const name of ['home','ecosystem','architecture','research','roadmap','developers','about']) {
+    assert.ok(ids.has(name), 'missing section ' + name)
+  }
+  for (const [,target] of html.matchAll(/\bhref="#([^"]+)"/g)) {
+    assert.ok(ids.has(target), 'unresolved anchor #' + target)
   }
 })
 
-test('project status data covers requested systems without implying availability', () => {
-  const names = projects.map((project) => project.name)
-  for (const name of [
-    'SilverPay',
-    'SilverForge / BSNA',
-    'SilvEx CEX',
-    'SilvEx DEX',
-    'SilvEx DEX Node',
-    'Silver Scan',
-    'BTCS L2',
-    'BTCS mining pool',
-    'POW-S',
-  ]) {
-    assert.ok(names.includes(name), `missing project ${name}`)
+test('product directory uses current Silver Labs names and real repository paths', () => {
+  const names = projects.map(p => p.name)
+  assert.equal(new Set(names).size, names.length)
+  for (const name of ['Silver Pool','Silver Scan','SilverPay','SilverForge Studio / BSNA','SilvEx','SilvEx DEX & DEX Node','BTCS L2','POW-S','Silver Labs Platform']) {
+    assert.ok(names.includes(name), 'missing ' + name)
   }
-  assert.ok(projects.every((project) => ['Prototype', 'Development', 'Planned', 'Research'].includes(project.status)))
-  assert.ok(projects.every((project) => project.repo === null || project.repo.startsWith('https://github.com/Silver-Labs-Technology-Development/')))
-  assert.ok(projects.every((project) => typeof project.next === 'string' && project.next.length > 0))
-  assert.equal(
-    projects.find((project) => project.name === 'SilverPay').repo,
-    'https://github.com/Silver-Labs-Technology-Development/SilverPay',
-  )
-  assert.match(projects.find((project) => project.name === 'SilverPay').summary, /one product encompassing its wallet and payment services/)
-  assert.match(projects.find((project) => project.name === 'SilverPay').summary, /pending block tag/)
-  assert.match(projects.find((project) => project.name === 'SilverPay').next, /local funding method/)
-  assert.match(projects.find((project) => project.name === 'SilverForge / BSNA').summary, /17\/17/)
-
-  const exchangeProjects = projects.filter((project) => project.name.startsWith('SilvEx '))
-  assert.equal(exchangeProjects.length, 3)
-  assert.ok(exchangeProjects.every((project) => project.status === 'Planned'))
-  for (const [name, repository] of [
-    ['SilvEx CEX', 'SilvEx-CEX'],
-    ['SilvEx DEX', 'SilvEx-DEX'],
-    ['SilvEx DEX Node', 'SilvEx-DEX-Node'],
-    ['Silver Scan', 'Silver-Scan'],
-    ['BTCS mining pool', 'BTCS-Mining-Pool'],
-    ['POW-S', 'POW-S'],
-  ]) {
-    const project = projects.find((candidate) => candidate.name === name)
-    assert.equal(
-      project.repo,
-      `https://github.com/Silver-Labs-Technology-Development/${repository}`,
-      `unexpected repository for ${name}`,
-    )
-    assert.match(project.repoLabel, /no implementation/)
+  const source = 'https://github.com/Silver-Labs-Technology-Development/'
+  for (const p of projects) {
+    assert.ok(['Prototype','Development','Planned','Research'].includes(p.status))
+    assert.ok(p.repo.startsWith(source), 'incorrect repository owner: ' + p.name)
+    assert.ok(p.summary.length > 70 && p.next.length > 40, 'unhelpful status description')
   }
-  assert.match(projects.find((project) => project.name === 'SilvEx CEX').summary, /not been adopted/)
-  assert.match(projects.find((project) => project.name === 'SilverForge / BSNA').summary, /local prototypes/)
-  assert.match(projects.find((project) => project.name === 'SilverForge / BSNA').summary, /identity-gated BTCS L2 local-node profile/)
-  assert.match(projects.find((project) => project.name === 'BTCS mining pool').summary, /not been runtime-tested/)
-  assert.match(projects.find((project) => project.name === 'BTCS mining pool').next, /GPL-3\.0/)
-  assert.match(projects.find((project) => project.name === 'Silver Scan').summary, /bounded local view/)
+  assert.equal(projects.find(p => p.name === 'Silver Pool').repo, source + 'Silver-Pool')
+  assert.equal(projects.find(p => p.name === 'Silver Scan').repo, source + 'Silver-Scan')
+  assert.equal(projects.find(p => p.name === 'SilvEx').repo, source + 'SilvEx')
 })
 
-test('project details explain each distinct SilvEx workstream and development boundary', () => {
-  for (const heading of ['SilvEx CEX', 'SilvEx DEX', 'SilvEx DEX Node', 'BTCS mining pool', 'POW-S']) {
-    assert.ok(html.includes(`<h3>${heading}</h3>`), `missing details for ${heading}`)
-  }
-  assert.match(html, /No cross-network transfer or trustless L2 settlement is claimed/)
-  assert.match(html, /no real-value trading is available/)
-  assert.match(html, /public Bitcoin Silver source plus the SilverPay, SilverForge, BTCS L2, and shared-platform repositories/)
-  assert.match(html, /one coordinated BTCS installation with an integrated GUI/)
-  assert.match(html, /unified installer and integrated GUI are targets, not available releases/)
-  assert.match(html, /Planned repositories for SilvEx, Silver Scan, the pool, and POW-S contain scope documents only/)
-  assert.match(html, /Application capability matrix/)
-  assert.match(html, /Injected-wallet sending is not yet verified while the node rejects the <code>pending<\/code> block tag/)
-  for (const repository of [
-    'SilverPay',
-    'SilverForge-Studio',
-    'btcs-l2',
-    'Silver-Labs-Bitcoin-Silver-Development/tree/silver-labs-l2',
-    'silver-labs-platform',
-  ]) assert.ok(html.includes(`https://github.com/Silver-Labs-Technology-Development/${repository}`))
-  assert.equal(
-    projects.find((project) => project.name === 'BTCS L2').repo,
-    'https://github.com/Silver-Labs-Technology-Development/btcs-l2',
-  )
-  assert.doesNotMatch(html, /no public source repository exists|do not yet have verified public source repositories|not available as public downloads/)
-  assert.match(html, /experimental BTCS L2 profile restricted to an identity-checked local development node/)
-  assert.equal(
-    projects.find((project) => project.name === 'BTCS L2').repo,
-    'https://github.com/Silver-Labs-Technology-Development/btcs-l2',
-  )
+test('pool, explorer and exchange statuses do not claim unverified production launch', () => {
+  const pool = projects.find(p => p.name === 'Silver Pool')
+  const scan = projects.find(p => p.name === 'Silver Scan')
+  const exchange = projects.find(p => p.name === 'SilvEx')
+  assert.match(pool.summary, /locally/i)
+  assert.match(pool.summary, /payouts/i)
+  assert.match(scan.summary, /BTCS L1/)
+  assert.match(scan.summary, /Coin Watch/)
+  assert.match(exchange.summary, /not verified/i)
+  assert.match(html, /href="projects\/silver-scan\.html"/)
+  assert.match(html, /href="growth\.html"/)
+  assert.match(html, /payouts disabled/i)
+  assert.match(html, /NO LIVE TRADING/)
+  assert.doesNotMatch(html, /no explorer and pool service|no separate pool service exists/i)
 })
 
-test('developer quickstart gives clone and test commands for every public repository', () => {
-  assert.match(html, /DEVELOPER QUICKSTART/)
-  for (const command of [
-    'git clone https://github.com/Silver-Labs-Technology-Development/btcs-l2.git',
-    'git clone https://github.com/Silver-Labs-Technology-Development/SilverForge-Studio.git',
-    'git clone https://github.com/Silver-Labs-Technology-Development/SilverPay.git',
-    'git clone https://github.com/Silver-Labs-Technology-Development/silver-labs-platform.git',
-    'git clone https://github.com/Silver-Labs-Technology-Development/Silver-Labs-Bitcoin-Silver-Development.git',
-    'npm ci',
-    'npm test',
-    'npm run check:types',
-    'BTCS_L2_RPC_URL=http://127.0.0.1:8545 npm test',
-  ]) assert.ok(html.includes(command), `missing quickstart command: ${command}`)
-  assert.doesNotMatch(html, /\/home\/user\//)
-  assert.match(css, /\.quickstart-grid\s*\{[^}]*grid-template-columns/)
+test('information pages exist, link home, and are accessible', () => {
+  for (const {slug,html:page} of infoPages) {
+    assert.match(page, /<html lang="en">/)
+    assert.match(page, /name="viewport"/)
+    assert.match(page, /class="skip" href="#content"/)
+    assert.match(page, /<main id="content">/)
+    assert.match(page, /<h1>/)
+    assert.match(page, /href="index\.html"/)
+    assert.match(html, new RegExp('href="' + slug + '\\.html"'))
+  }
+  assert.match(infoCss, /:focus-visible/)
+  assert.match(infoCss, /@media\(max-width:640px\)/)
 })
 
-test('external links use the verified Silver Labs organization and documented paths', () => {
-  const hrefs = [...html.matchAll(/\bhref="(https:\/\/[^"]+)"/g)].map((match) => match[1])
-  assert.ok(hrefs.length > 0)
-  for (const href of hrefs) {
-    const url = new URL(href)
-    assert.equal(url.hostname, 'github.com', `unexpected external host in ${href}`)
-    assert.ok(
-      url.pathname === '/Silver-Labs-Technology-Development' ||
-        url.pathname.startsWith('/Silver-Labs-Technology-Development/'),
-      `unexpected GitHub owner in ${href}`,
-    )
-  }
-  for (const match of html.matchAll(/<a\b[^>]*target="_blank"[^>]*>/g)) {
-    const tag = match[0]
-    assert.match(tag, /\brel="noopener noreferrer"/)
+test('listing information is inactive, not a payable offer', () => {
+  const listing = infoPages.find(p => p.slug === 'listing').html
+  assert.match(listing, /US\$4,000/)
+  assert.match(listing, /Applications are not currently open/)
+  assert.match(listing, /not an active price/i)
+  assert.match(listing, /network, contract or mint address/)
+})
+
+test('site policies and FAQ distinguish products and providers', () => {
+  const faq = infoPages.find(p => p.slug === 'faq').html
+  const terms = infoPages.find(p => p.slug === 'terms').html
+  const privacy = infoPages.find(p => p.slug === 'privacy').html
+  assert.match(faq, /Silver Labs operates its own products and developer repositories/i)
+  assert.match(faq, /Silver Scan/)
+  assert.match(terms, /Third-party market/)
+  assert.match(privacy, /Hosting providers/)
+})
+
+test('all outbound index and information-page links use safe rel and known host', () => {
+  for (const page of [html,...infoPages.map(x => x.html)]) {
+    for (const [,link] of page.matchAll(/\bhref="(https:\/\/[^"]+)"/g)) {
+      const url = new URL(link)
+      assert.equal(url.hostname,'github.com', 'unexpected outbound host ' + link)
+      assert.ok(url.pathname.startsWith('/Silver-Labs-Technology-Development'))
+    }
+    for (const [tag] of page.matchAll(/<a\b[^>]*target="_blank"[^>]*>/g)) {
+      assert.match(tag, /rel="noopener noreferrer"/)
+    }
   }
 })
 
-test('responsive and accessibility foundations are present', () => {
-  assert.match(html, /<html lang="en">/)
+test('homepage and information styling remain responsive', () => {
   assert.match(html, /name="viewport"/)
   assert.match(html, /class="skip-link" href="#main"/)
   assert.match(html, /aria-label="Primary navigation"/)
-  assert.match(html, /aria-expanded="false"/)
   assert.match(css, /@media \(max-width: 640px\)/)
   assert.match(css, /@media \(prefers-reduced-motion: reduce\)/)
-  assert.match(css, /:focus-visible/)
-})
-
-test('Silver Labs visual identity uses navy structure and bright blue accents', () => {
   assert.match(css, /--navy:\s*#14263d/i)
   assert.match(css, /--accent:\s*#1677d2/i)
-  assert.match(css, /--blue:\s*#8dc8ff/i)
-  assert.match(css, /\.button-light\s*\{[^}]*background:\s*var\(--accent\)/s)
 })
 
-test('Pages workflow validates pull requests and deploys only the development branch', () => {
-  assert.match(pagesWorkflow, /push:\s*\n\s+branches:\s*\n\s+- website-development/)
-  assert.match(pagesWorkflow, /pull_request:\s*\n\s+branches:\s*\n\s+- main/)
-  assert.match(pagesWorkflow, /if:\s+github\.event_name != 'pull_request'/)
-  assert.match(pagesWorkflow, /path: _site/)
-  assert.match(pagesWorkflow, /pages:\s+write/)
-  assert.match(pagesWorkflow, /id-token:\s+write/)
-  assert.match(pagesWorkflow, /node --test tests\/\*\.test\.mjs/)
+test('Pages workflow tests PRs, deploys development branch, packages each page', () => {
+  assert.match(workflow, /pull_request:\s*\n\s*branches:\s*\n\s*- main/)
+  assert.match(workflow, /branches:\s*\n\s*- website-development/)
+  assert.match(workflow, /node --test tests\/\*\.test\.mjs/)
+  assert.match(workflow, /path: _site/)
+  assert.match(workflow, /if:\s*github\.event_name != 'pull_request'/)
+  for (const page of [...pages.map(x => x+'.html'),'info.css','project.css','shell.css','shell.mjs','architecture.html','roadmap.html','developers.html','growth.html','index.html','styles.css','projects.mjs','site.mjs']) {
+    assert.ok(workflow.includes(page), 'not packaged: ' + page)
+  }
+})
+
+test('all eleven products have substantial dedicated pages with honest launch gates', async () => {
+  const directory = await read('projects/index.html')
+  const growth = await read('growth.html')
+  for (const slug of projectSlugs) {
+    const page = await read('projects/' + slug + '.html')
+    assert.match(directory, new RegExp('href="' + slug + '\\.html"'))
+    assert.match(page, /What has already been built/)
+    assert.match(page, /How to use or preview/)
+    assert.match(page, /How to get involved/)
+    assert.match(page, /When will it be live/)
+    assert.match(page, /release-readiness|launch dates|launch date|launch milestones|Launch dates/i)
+    assert.match(page, /href="\.\.\/index\.html"/)
+    assert.ok(page.length > 4000, 'Project page has insufficient depth: ' + slug)
+  }
+  for (const project of projects) {
+    assert.ok(project.slug, 'Missing project page slug: ' + project.name)
+    assert.ok(projectSlugs.includes(project.slug), 'Missing file for project: ' + project.slug)
+  }
+  assert.match(growth, /YOUR PROJECT/)
+  assert.match(growth, /Silver Scan/)
+  assert.match(growth, /SPONSORED PROJECT BILLBOARD/)
+  assert.match(growth, /Applications, paid billboard inventory and listing payments are not currently open/)
+})
+
+test('Pages artifact includes the full project directory and growth pages', () => {
+  assert.match(workflow, /cp -R projects _site\//)
+  assert.match(workflow, /project\.css/)
+  assert.match(workflow, /growth\.html/)
+})
+
+
+const allSitePaths = [
+  'index.html', ...pages.map(p=>p+'.html'),
+  'architecture.html','roadmap.html','developers.html','growth.html',
+  'projects/index.html',...projectSlugs.map(slug=>'projects/'+slug+'.html')
+]
+
+test('every page shares one Silver Pool-inspired static navigation and footer', async()=>{
+  const css = await read('shell.css')
+  const js = await read('shell.mjs')
+  assert.match(css,/--charcoal:#101315/)
+  assert.match(css,/--gold-light:#e4c778/)
+  assert.match(css,/\.primary-navigation/)
+  assert.match(css,/@media\(max-width:900px\)/)
+  assert.match(js,/aria-expanded/)
+  for(const path of allSitePaths){
+    const html=await read(path)
+    const prefix=path.startsWith('projects/')?'../':''
+    assert.match(html,new RegExp('href="'+prefix+'shell\\.css"'),path)
+    assert.match(html,new RegExp('src="'+prefix+'shell\\.mjs"'),path)
+    assert.equal((html.match(/class="site-header"/g)||[]).length,1,path+' must have one header')
+    assert.equal((html.match(/class="shell-footer"/g)||[]).length,1,path+' must have one footer')
+    const nav=html.match(/<nav\b[^>]*data-site-nav[^>]*>([\s\S]*?)<\/nav>/)
+    assert.ok(nav,'Missing site-wide navigation: '+path)
+    const targets=[...nav[1].matchAll(/\bhref="([^"]+)"/g)].map(x=>x[1])
+    assert.deepEqual(targets,[
+      'index.html','projects/index.html','architecture.html','roadmap.html',
+      'developers.html','growth.html','about.html','contact.html'
+    ].map(p=>prefix+p),'Wrong nav structure: '+path)
+    assert.ok(targets.every(h=>!h.includes('#')),path+' still has scrolling tabs')
+  }
+})
+
+test('all internal links point to real HTML pages or explicit skip targets', async()=>{
+  for(const path of allSitePaths){
+    const html=await read(path)
+    const absolute=new URL('../'+path,import.meta.url)
+    const ids=new Set([...html.matchAll(/\bid="([^"]+)"/g)].map(x=>x[1]))
+    for(const [,href] of html.matchAll(/<a\b[^>]*\bhref="([^"]+)"/g)){
+      if(href.startsWith('#')){
+        assert.ok(ids.has(href.slice(1)),'Broken local anchor '+href+' on '+path)
+        continue
+      }
+      if(/^(https?:|mailto:|data:)/.test(href))continue
+      const resolved=new URL(href,absolute)
+      assert.ok(resolved.pathname.endsWith('.html'),'Non-page local link '+href+' on '+path)
+      try{await access(fileURLToPath(resolved))}
+      catch{assert.fail('Broken link '+href+' on '+path)}
+    }
+  }
+})
+
+test('homepage CTAs and diagrams lead to full pages, not scrolling sections',()=>{
+  assert.match(html,/href="projects\/index\.html"/)
+  assert.match(html,/class="arch-node[^"]*arch-link" href="projects\/silver-scan\.html"/)
+  assert.match(html,/href="architecture\.html"/)
+  assert.match(html,/href="roadmap\.html"/)
+  assert.match(html,/href="developers\.html"/)
+  assert.doesNotMatch(html,/href="#(?:ecosystem|architecture|research|roadmap|developers|about|home)"/)
+})
+
+test('dedicated technology, roadmap and developer tabs contain substantive content',async()=>{
+  for(const slug of ['architecture','roadmap','developers']){
+    const page=await read(slug+'.html')
+    assert.ok(page.length>3000,slug+' topic page has insufficient depth')
+    assert.match(page,/class="topic-hero"/)
+    assert.match(page,/class="topic-card"/)
+    assert.match(page,/href="projects\/index\.html"/)
+  }
 })

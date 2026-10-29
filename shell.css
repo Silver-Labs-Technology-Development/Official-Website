@@ -1,0 +1,220 @@
+/* Silver Labs shared visual system — aligned to Silver Pool's established
+   charcoal / silver / gold palette and multipage information architecture. */
+:root{
+  color-scheme:light;--ink:#15181b;--ink-soft:#343b42;--muted:#66707a;
+  --line:#dfe3e7;--paper:#f4f6f7;--white:#fff;--charcoal:#101315;
+  --charcoal-2:#191e22;--silver:#d7dce0;--silver-2:#eef1f3;
+  --accent:#1a6fba;--accent-dark:#12558f;--gold:#b99642;
+  --gold-light:#e4c778;--content:1160px;--radius:14px;
+  --shadow:0 18px 50px rgba(16,19,21,.08);
+  font-family:Inter,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+body,body.project-page{background:var(--white);color:var(--ink);font-family:Inter,"Segoe UI",Helvetica,Arial,sans-serif;line-height:1.6}
+a{color:var(--accent);text-underline-offset:3px}
+a:hover{color:var(--accent-dark)}
+:focus-visible{outline:3px solid var(--gold)!important;outline-offset:3px}
+img,svg,canvas{max-width:100%}
+.site-header{position:sticky;top:0;z-index:40;background:rgba(16,19,21,.97);color:#f5f7f8;border-bottom:1px solid #333a40;backdrop-filter:blur(12px)}
+.header-inner{width:min(1260px,calc(100% - 48px));height:auto;min-height:72px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.site-header .brand{display:inline-flex;align-items:center;gap:11px;white-space:nowrap;text-decoration:none;color:#fff}
+.site-header .brand-mark{width:35px;height:35px;display:grid;place-items:center;background:linear-gradient(145deg,#f4f6f8,#b8c1c8);color:#101315;border-radius:9px;font-size:20px;font-weight:900;font-family:Inter,"Segoe UI",sans-serif;border:0}
+.site-header .brand-name{font-size:13px;font-weight:850;letter-spacing:.08em;color:#fff}
+.site-header .brand-name span{color:var(--gold-light);font-weight:850}
+.site-header .primary-navigation{display:flex;align-items:center;gap:2px;flex-wrap:wrap}
+.site-header .primary-navigation a{color:#cbd3d9;font-weight:650;font-size:12px;text-decoration:none;padding:9px 10px;border-radius:8px;transition:background .12s ease}
+.site-header .primary-navigation a:hover,.site-header .primary-navigation a[aria-current="page"]{background:#ffffff17;color:#fff}
+.site-header .primary-navigation a[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--gold-light)}
+.site-header .primary-navigation .nav-about{background:var(--gold-light);color:#1b1b19;border-radius:8px}
+.site-header .primary-navigation .nav-about:hover,.site-header .primary-navigation .nav-about[aria-current="page"]{background:#f0d58f;color:#17130a}
+.site-header .menu-toggle{display:none;width:44px;height:44px;border-radius:9px;background:transparent;color:#fff;border:1px solid #ffffff44;flex-direction:column;align-items:center;justify-content:center;gap:5px}
+.site-header .menu-toggle span[aria-hidden="true"]{display:block;width:20px;height:2px;background:currentColor}
+.shell-footer{background:var(--charcoal);color:#cbd3d9;border-top:1px solid #374047;padding:29px max(24px,calc((100vw - 1160px)/2));display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;font-size:12px}
+.shell-footer .footer-identity{display:flex;flex-direction:column;gap:5px}
+.shell-footer .footer-identity strong{color:#fff;letter-spacing:.12em;font-size:14px}
+.shell-footer .footer-links{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.shell-footer a{color:#cbd3d9;text-decoration:none}
+.shell-footer a:hover{color:var(--gold-light)}
+.shell-footer .footer-note{font-size:11px;color:#a6b1ba;max-width:330px}
+.skip-link,.skip{position:absolute!important;top:-100px!important;left:12px!important;transform:none!important;background:var(--gold-light)!important;color:#141414!important;padding:10px 14px!important;border-radius:7px;z-index:100}
+.skip-link:focus,.skip:focus{top:12px!important}
+.info-button,.button-light,.project-action.action-primary{background:var(--gold-light)!important;color:#16140c!important;border:1px solid var(--gold-light)!important;border-radius:9px!important}
+.info-button:hover,.button-light:hover,.project-action.action-primary:hover{background:#f0d58f!important;color:#14120a!important}
+.button-outline{border-radius:9px}
+body:not(.project-page) .topic-main{max-width:1200px;margin:auto;padding:35px clamp(20px,4vw,44px) 85px}
+.topic-hero{border-radius:14px;padding:clamp(30px,5vw,65px);background:radial-gradient(circle at 80% 18%,#b9964233,transparent 34%),linear-gradient(135deg,#0f1214,#202b31);color:white}
+.topic-hero .eyebrow{color:var(--gold-light)}
+.topic-hero h1{font-size:clamp(35px,5vw,60px);letter-spacing:-.04em;color:#fff;max-width:850px;line-height:1.12}
+.topic-hero p{max-width:830px;color:#d0d9df;font-size:16px;line-height:1.75}
+.topic-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px;margin:23px 0}
+.topic-card{background:white;border:1px solid var(--line);border-radius:var(--radius);padding:28px;box-shadow:0 3px 16px #1013150b}
+.topic-card h2{font-size:24px;margin:10px 0}
+.topic-card p{color:var(--muted);font-size:14px;line-height:1.76}
+.topic-number{font-size:11px;color:var(--gold);font-weight:850;letter-spacing:.12em}
+.topic-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:21px}
+.topic-links a,.topic-callout a{display:inline-block;background:var(--paper);color:var(--accent-dark);padding:9px 12px;border-radius:7px;border:1px solid var(--line);font-size:12px;text-decoration:none;font-weight:800}
+.topic-links a:hover,.topic-callout a:hover{border-color:var(--accent)}
+.topic-callout{background:var(--paper);border:1px solid var(--line);padding:30px;border-radius:12px}
+.topic-callout h2{font-size:26px}.topic-callout p{max-width:800px;font-size:14px;color:var(--muted)}
+/* Homepage: preserve its existing section structures, align palette and nav. */
+.hero{background:radial-gradient(circle at 80% 15%,#b996422b,transparent 32%),linear-gradient(135deg,#101315,#1e272d)!important}
+.hero h1 span{color:var(--gold-light)}
+.hero .eyebrow{color:var(--gold-light)}
+.project-card,.feature-project{border-radius:var(--radius);box-shadow:0 2px 12px #10131508}
+.project-card:hover,.feature-project:hover{border-color:#cfad6b}
+.project-detail-link{color:var(--accent-dark)}
+.growth-section{background:#1a242a}
+/* Content is a Silver Pool-style white canvas; detailed pages retain dark hero panels. */
+body.project-page .project-main{color:var(--ink)}
+.project-page .project-main p:not(.project-intro):not(.project-strapline):not(.caution):not(.eta){color:var(--muted)}
+.project-page .project-main .breadcrumb{color:var(--muted)}
+.project-page .project-main .breadcrumb a{color:var(--accent-dark)}
+.project-page .project-main section{border-color:var(--line)}
+.project-page .project-main section .section-label h2{color:var(--ink)}
+.project-page .project-main li{background:var(--paper);border-color:var(--line);color:var(--ink-soft)}
+.project-page .project-main .caution{background:#fff7df;border-left-color:var(--gold);color:#534b3b}
+.project-page .project-main .eta{color:#77601d}
+.project-page .project-main .project-hero .project-intro{color:#d4e0e7}
+.project-page .project-main .project-hero .project-strapline{color:#e5eff5}
+.project-page .project-main .project-hero .kicker{color:var(--gold-light)}
+.project-page .project-main .project-stage{background:#101315b3}
+.project-page .project-main .project-stage strong{color:#f6df9c}
+.project-page .project-main .project-stage span,.project-page .project-main .project-stage small{color:#cfdae2}
+.project-page .project-main .project-end{background:linear-gradient(130deg,#12191e,#24343d)}
+.project-page .project-main .project-end h2,.project-page .project-main .project-end p{color:#fff}
+.project-page .directory-card{background:var(--white);border-color:var(--line);color:var(--ink)}
+.project-page .directory-card:hover{background:var(--paper);border-color:var(--gold)}
+.project-page .directory-card h2{color:var(--ink)}
+.project-page .directory-card p{color:var(--muted)}
+.project-page .directory-card strong{color:var(--accent-dark)}
+.project-page .directory-card .directory-num{color:var(--gold)}
+.project-page .directory-hero{border-color:var(--line)}
+.project-page .directory-hero p{color:var(--muted)}
+.project-page .directory-grid{gap:14px}
+.project-page .growth-billboard,.project-page .growth-hero{color:white}
+.project-page .growth-billboard p,.project-page .growth-hero p{color:#d0dce7}
+.project-page .growth-billboard h2,.project-page .growth-hero h1{color:white}
+.project-page .growth-steps>article,.project-page .growth-example>div{background:var(--paper);border-color:var(--line)}
+.project-page .growth-steps h3,.project-page .growth-steps p,.project-page .growth-example b{color:var(--ink)}
+.project-page .growth-example span{color:var(--muted)}
+.project-page .growth-packages th{color:#fff;background:#21343e}
+.project-page .growth-packages td{color:var(--ink);border-color:var(--line)}
+.project-page .growth-packages th{border-color:var(--line)}
+/* Do not let each legacy page style create a second header or nav. */
+.top,.wordmark{display:none!important}
+@media(max-width:1100px){
+.site-header .primary-navigation{gap:0}
+.site-header .primary-navigation a{font-size:11px;padding:8px 7px}
+}
+@media(max-width:900px){
+.site-header .menu-toggle{display:flex}
+.site-header .header-inner{flex-wrap:wrap;padding:11px 0;min-height:65px}
+.site-header .primary-navigation{display:none;width:100%;order:3;flex-direction:column;align-items:stretch;border-top:1px solid #ffffff26;padding:10px 0 5px;gap:4px}
+.site-header .primary-navigation.is-open{display:flex}
+.site-header .primary-navigation a{font-size:14px;padding:12px 13px}
+.site-header .menu-toggle{margin-left:auto}
+.topic-grid{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+.site-header .header-inner{width:calc(100% - 34px)}
+.shell-footer{padding:25px 18px;flex-direction:column}
+.project-page .project-main{padding-top:24px}
+.topic-card{padding:20px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* Link behavior and accessible contrast in formerly mismatched page layouts. */
+.project-card .project-title-link{color:var(--ink);text-decoration:none}
+.project-card .project-title-link:hover{color:var(--accent)}
+.arch-node.arch-link{color:inherit;text-decoration:none;transition:transform .14s ease,border-color .14s ease}
+.arch-node.arch-link:hover{transform:translateY(-2px);border-color:var(--gold-light)}
+.arch-node.arch-link:focus-visible{outline-color:var(--gold-light)}
+.project-page .project-hero h1{color:#fff}
+.project-page .project-main .project-hero h1,.project-page .project-main .project-end h2{color:#fff}
+.project-page .project-hero .project-action.action-outline,.project-page .project-end .project-action.action-outline{color:#fff}
+.project-page .project-main .directory-hero h1{color:var(--ink)}
+.project-page .directory-hero .kicker{color:var(--gold)}
+.project-page .growth-hero .kicker{color:var(--gold-light)}
+.project-page .project-main .growth-hero h1{color:#fff}
+.project-page .project-main .growth-hero .caution{color:#5d4a20}
+.project-page .project-main .growth-billboard h2{color:#fff}
+.project-page .growth-billboard aside span{color:#c5d4df}
+.project-page .growth-billboard aside strong{color:#fff}
+.project-page .growth-steps>article b{color:#9b792d}
+.project-page .project-main .growth-steps h3{color:var(--ink)}
+.project-page .project-main .growth-steps p{color:var(--muted)}
+.project-page .project-main .growth-example b{color:var(--ink)}
+.project-page .growth-packages th{background:var(--charcoal)}
+.project-page .growth-packages th,.project-page .growth-packages td{border-color:var(--line)}
+.project-page .project-main .growth-hero .project-action.action-outline{color:#fff}
+.project-page .project-main .growth-billboard .preview-tag{display:inline-block;color:#f0dcad;font-weight:720;font-size:12px;margin-top:10px}
+
+/* Final contrast/spacing parity with the Silver Pool content system. */
+main strong{color:var(--ink)}
+.project-page .project-main .project-stage strong{color:#f6df9c}
+.project-page .project-main .growth-billboard aside strong{color:#fff}
+.project-page .project-main .growth-example strong{color:var(--ink)}
+.project-page .project-main .project-end strong{color:#fff}
+.section-pad{padding-block:72px}
+.hero h1{font-size:clamp(46px,6vw,76px)}
+
+/* SILVER LABS — BLUE/SILVER DESIGN DIRECTIVE (October 2026)
+   User-approved direction: a unified midnight/navy, icy blue and silver
+   identity, NOT the gold-accented Silver Pool prototype palette. */
+:root{
+  --ink:#dfe9f7;--ink-soft:#bfd0e3;--muted:#99acc2;
+  --line:#30465c;--paper:#122237;--white:#101b2d;
+  --charcoal:#0b1524;--charcoal-2:#122439;
+  --silver:#d7e7f6;--silver-2:#213b54;
+  --accent:#81c9ff;--accent-dark:#a9dcff;--gold:#70bff8;
+  --gold-light:#90d4ff;--blue:#a9dcff;
+  color-scheme:dark;
+}
+body,body.project-page{background:#0c182a;color:#e7f1fc}
+.site-header{background:rgba(9,19,34,.97);border-color:#315071}
+.site-header .brand-mark{background:linear-gradient(145deg,#e4f5ff,#80c7f4);color:#0a2037}
+.site-header .brand-name span{color:#9edcff}
+.site-header .primary-navigation a[aria-current="page"]{box-shadow:inset 0 -2px 0 #80c7ff}
+.site-header .primary-navigation .nav-about{background:#93d5ff;color:#08223d}
+.site-header .primary-navigation .nav-about:hover{background:#c0e8ff;color:#08223d}
+.shell-footer{background:#091523;border-top-color:#315071}
+.shell-footer .footer-identity strong{color:#f2f9ff}
+.shell-footer a:hover{color:#a8ddff}
+.info-button,.button-light,.project-action.action-primary{background:#91d5ff!important;color:#0b2138!important;border-color:#91d5ff!important}
+.info-button:hover,.button-light:hover,.project-action.action-primary:hover{background:#c5eaff!important;color:#09233d!important}
+.hero,.topic-hero,.project-page .project-hero,.growth-section,.growth-hero{
+  background:radial-gradient(circle at 80% 15%,rgba(64,155,235,.24),transparent 40%),linear-gradient(135deg,#0b192b,#1c3a57)!important;
+  border-color:#315574!important;
+}
+.hero h1 span,.topic-hero h1 span{color:#93d5ff}
+.eyebrow,.topic-hero .eyebrow,.project-page .project-main .project-hero .kicker{color:#90d4ff}
+.hero-copy,.project-page .project-intro,.topic-hero p{color:#ccdeee}
+.topic-card,.feature-project,.project-card,.project-page .directory-card{
+  background:#12253a!important;border-color:#35516c!important;color:#e8f3ff!important;
+}
+.topic-card h2,.feature-project h3,.project-page .directory-card h2{color:#f0f7ff!important}
+.topic-card p,.feature-project p,.project-page .directory-card p{color:#b7cbe0!important}
+.topic-card:hover,.feature-project:hover,.project-card:hover,.project-page .directory-card:hover{border-color:#83c8ff!important;background:#183451!important}
+.topic-number,.topic-links a,.topic-callout a,.project-detail-link,.project-page .directory-card strong{color:#99d8ff}
+.topic-links a,.topic-callout a{background:#1b3853;border-color:#345877}
+.topic-callout,.project-page .project-main li,.project-page .growth-steps>article,.project-page .growth-example>div{
+  background:#142b42!important;border-color:#34516b!important;color:#e0eeff!important;
+}
+.topic-callout p,.project-page .project-main li,.project-page .growth-steps p,.project-page .growth-example span{color:#bad0e6!important}
+.project-page .project-main .section-label h2,.project-page .project-main .directory-hero h1{color:#f2f8ff!important}
+.project-page .project-main .section-label>span,.project-page .directory-hero .kicker{color:#91d2fb}
+.project-page .project-main .breadcrumb,.project-page .directory-hero p{color:#a7c2d9}
+.project-page .project-main .breadcrumb a{color:#9bd9ff}
+.project-page .project-main .project-stage{background:#0c1c30d9;border-color:#427092}
+.project-page .project-main .project-stage strong{color:#a5defe}
+.project-page .project-main .project-end{background:linear-gradient(130deg,#102b45,#1b4767);border-color:#4a7896}
+.project-page .project-main .caution{background:#233d51;color:#cfe6fb;border-left-color:#82cbff}
+.project-page .project-main .eta{color:#9ad7ff}
+.project-page .growth-packages th{background:#1b3852;color:#eaf5fe}
+.project-page .growth-packages td{color:#d1e5f9;border-color:#47657c}
+.project-page .growth-steps>article b,.project-page .directory-card .directory-num{color:#8fcefd}
+.project-page .project-main .growth-steps h3,.project-page .project-main .growth-example b{color:#e7f2ff}
+.project-title-link,.project-card .project-title-link{color:#eff8ff}
+.project-card .project-title-link:hover{color:#9fd9ff}
+.arch-node.arch-link:hover{border-color:#86cbff}
+.feature-project strong,.project-page .directory-card .directory-stage{color:#91d3fd}
+:focus-visible{outline-color:#9ddcff!important}
